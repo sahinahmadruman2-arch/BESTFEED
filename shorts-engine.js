@@ -5,6 +5,7 @@
 
   const $ = s => document.querySelector(s);
   const STORAGE = "bf_shorts_v1_stats";
+  const SOUND_STORAGE = "bf_shorts_sound_v1";
 
   const read = (key, fallback) => {
     try {
@@ -19,6 +20,19 @@
       localStorage.setItem(key, JSON.stringify(value));
     } catch {}
   };
+
+  // Remember sound preference.
+  let soundEnabled = read(SOUND_STORAGE, false);
+
+  function updateSoundButtons() {
+    document.querySelectorAll("[data-sound]").forEach(button => {
+      button.textContent = soundEnabled ? "🔊" : "♫";
+      button.setAttribute(
+        "aria-label",
+        soundEnabled ? "Turn sound off" : "Turn sound on"
+      );
+    });
+  }
 
   function getId(url) {
     try {
@@ -163,34 +177,18 @@
 
         <div class="short-actions">
 
-          <button
-            data-like="${v.id}"
-            aria-label="Like">
-            ♡
-          </button>
+          <button data-like="${v.id}" aria-label="Like">♡</button>
 
-          <button
-            data-dislike="${v.id}"
-            aria-label="Dislike">
-            👎
-          </button>
+          <button data-dislike="${v.id}" aria-label="Dislike">👎</button>
 
-          <button
-            data-save="${v.id}"
-            aria-label="Save">
-            ＋
-          </button>
+          <button data-save="${v.id}" aria-label="Save">＋</button>
 
-          <button
-            data-ignore="${v.id}"
-            aria-label="Not interested">
-            ×
-          </button>
+          <button data-ignore="${v.id}" aria-label="Not interested">×</button>
 
           <button
             data-sound="${v.id}"
-            aria-label="Turn sound on">
-            ♫
+            aria-label="${soundEnabled ? "Turn sound off" : "Turn sound on"}">
+            ${soundEnabled ? "🔊" : "♫"}
           </button>
 
         </div>
@@ -311,8 +309,15 @@
           onReady: event => {
             if (activeId !== v.id) return;
 
-            // Start muted to support browser autoplay rules.
-            event.target.mute();
+            // Apply the saved sound preference to every new Short.
+            if (soundEnabled) {
+              event.target.unMute();
+              event.target.setVolume(80);
+            } else {
+              event.target.mute();
+            }
+
+            updateSoundButtons();
             event.target.playVideo();
           },
 
@@ -387,9 +392,7 @@
       }
 
       const id = visible.target.dataset.shortId;
-
       const index = ordered.findIndex(v => v.id === id);
-
       const video = ordered[index];
 
       if (video) {
@@ -467,9 +470,7 @@
     }
 
     else if (button.dataset.save) {
-      const saved = new Set(
-        read("bf_v2_saved", [])
-      );
+      const saved = new Set(read("bf_v2_saved", []));
 
       if (saved.has(id)) {
         saved.delete(id);
@@ -496,16 +497,27 @@
     }
 
     else if (button.dataset.sound) {
+      // Toggle sound for the entire Shorts feed.
+      soundEnabled = !soundEnabled;
+
+      save(SOUND_STORAGE, soundEnabled);
+
       if (activePlayer && activeId === id) {
         try {
-          activePlayer.unMute();
-          activePlayer.setVolume(80);
-
-          button.textContent = "🔊";
-
-          notify("Sound on");
+          if (soundEnabled) {
+            activePlayer.unMute();
+            activePlayer.setVolume(80);
+            notify("Sound on");
+          } else {
+            activePlayer.mute();
+            notify("Sound off");
+          }
         } catch {}
+      } else {
+        notify(soundEnabled ? "Sound on" : "Sound off");
       }
+
+      updateSoundButtons();
     }
 
     persist();
@@ -528,7 +540,6 @@
     persist();
   });
 
-  // Keep the Shorts engine ready.
   render();
 
 })();
