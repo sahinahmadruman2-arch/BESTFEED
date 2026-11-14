@@ -1,8 +1,11 @@
+
 // BEST FEED VIDEO LIBRARY
-// Add/edit videos here. Keep the same 4 fields for each item.
-// featured: true makes MrBeast videos appear first for new visitors.
+// Add/edit videos here. Keep the same fields for each item.
+// featured: true makes selected videos appear first for new visitors.
+
 window.BEST_FEED_VIDEOS = [
-  // MRBEAST — starter featured collection
+
+  // MRBEAST — STARTER FEATURED COLLECTION
   { url:"https://www.youtube.com/watch?v=0e3GPea1Tyg", title:"Real-Life Squid Game", creator:"MrBeast", category:"MrBeast", description:"A huge real-life competition inspired by Squid Game.", featured:true },
   { url:"https://www.youtube.com/watch?v=l-nMKJ5J3Uc", title:"100 People Compete", creator:"MrBeast", category:"MrBeast", description:"A large-scale competition with a huge prize.", featured:true },
   { url:"https://www.youtube.com/watch?v=KOEfDvr4DcQ", title:"Face Your Biggest Fear", creator:"MrBeast", category:"MrBeast", description:"Contestants take on unusual fear-based challenges.", featured:true },
@@ -54,10 +57,12 @@ window.BEST_FEED_VIDEOS = [
   { url:"https://www.youtube.com/watch?v=T9xsTO6ujqM", title:"Unusual Ball Experiment", creator:"Mark Rober", category:"Experiments", description:"An unusual experiment with a ball." },
   { url:"https://www.youtube.com/watch?v=edRloa1ZHqY", title:"Water Balloon Experiment", creator:"Mark Rober", category:"Experiments", description:"A water balloon and trampoline experiment." },
   { url:"https://www.youtube.com/watch?v=Twn_4AW0M6U", title:"Creative Robot Inventions", creator:"Mark Rober", category:"Experiments", description:"Creative inventions and robot ideas." },
-    // GAMING & ANIMATION
+
+  // GAMING & ANIMATION
   { url:"https://www.youtube.com/watch?v=iWTs1BWCqrE", title:"The Duel", creator:"Dream", category:"Gaming", description:"A Minecraft video made in memory of Technoblade." },
   { url:"https://www.youtube.com/watch?v=lhikdD6Hf2M", title:"Animation Meets YouTube", creator:"Alan Becker", category:"Animation", description:"An animated internet adventure." },
 
   // NEW VIDEO PICKS
   { url:"https://www.youtube.com/watch?v=bHxLy6Qza3M", title:"10,000 Player Minecraft War", creator:"Parrot", category:"Gaming", description:"A massive Minecraft war with thousands of players." }
+
 ];
