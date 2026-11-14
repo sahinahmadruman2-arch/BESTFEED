@@ -3,253 +3,763 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#f5f5f2">
 <title>BEST FEED — Discover something good</title>
+
 <style>
 :root{
   color-scheme:light;
-  --bg:#f5f5f2;--paper:#fff;--paper2:#f0f0ec;
-  --ink:#20211f;--muted:#85877f;--line:#e7e7e1;
-  --accent:#6858df;--soft:#efedff;
-  --shadow:0 12px 38px #25251b0c;
+  --bg:#f5f5f2;
+  --paper:#fff;
+  --paper2:#f0f0ec;
+  --ink:#20211f;
+  --muted:#85877f;
+  --line:#e7e7e1;
+  --accent:#6858df;
+  --soft:#efedff;
+  --shadow:0 15px 45px #25251b0c;
   --ease:cubic-bezier(.2,.75,.25,1);
 }
 body.dark{
   color-scheme:dark;
-  --bg:#11120f;--paper:#1b1d19;--paper2:#242620;
-  --ink:#f2f2ec;--muted:#a3a69a;--line:#30332c;
-  --accent:#a99eff;--soft:#302c4b;
-  --shadow:0 15px 42px #0005;
+  --bg:#11120f;
+  --paper:#1b1d19;
+  --paper2:#242620;
+  --ink:#f2f2ec;
+  --muted:#a3a69a;
+  --line:#30332c;
+  --accent:#a99eff;
+  --soft:#302c4b;
+  --shadow:0 15px 45px #0005;
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:90px}
+html{scroll-behavior:smooth;scroll-padding-top:85px}
 body{
-  margin:0;background:var(--bg);color:var(--ink);
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
   font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
   -webkit-font-smoothing:antialiased;
-  transition:background .35s,color .35s;
+  transition:background .3s,color .3s;
 }
 button,input,select{font:inherit}
 button{cursor:pointer;color:inherit}
 button:focus-visible,input:focus-visible,select:focus-visible{
-  outline:3px solid #9388ff88;outline-offset:3px
+  outline:3px solid #9388ff88;
+  outline-offset:3px;
 }
 button:disabled{opacity:.4;cursor:not-allowed}
+button:active{transform:scale(.97)}
+::selection{background:var(--accent);color:white}
+
+/* HEADER */
 header{
-  height:70px;position:sticky;top:0;z-index:20;
-  display:flex;align-items:center;gap:20px;
+  height:70px;
+  position:sticky;
+  top:0;
+  z-index:20;
+  display:flex;
+  align-items:center;
+  gap:20px;
   padding:0 max(20px,calc((100vw - 1200px)/2));
   background:color-mix(in srgb,var(--bg) 86%,transparent);
-  backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);
+  backdrop-filter:blur(22px);
+  -webkit-backdrop-filter:blur(22px);
   border-bottom:1px solid var(--line);
+  transition:background .3s;
 }
-.logo{font-weight:950;letter-spacing:-1.2px;font-size:20px;white-space:nowrap}
+.logo{
+  font-weight:950;
+  letter-spacing:-1.2px;
+  font-size:20px;
+  white-space:nowrap;
+}
 .logo span{color:var(--accent)}
 .search{max-width:510px;flex:1;margin:auto;position:relative}
 .search input{
-  width:100%;height:43px;border:1px solid var(--line);
-  border-radius:14px;background:var(--paper);color:var(--ink);
-  padding:0 15px 0 40px;transition:border .2s,box-shadow .2s;
+  width:100%;
+  height:43px;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:var(--paper);
+  color:var(--ink);
+  padding:0 15px 0 40px;
+  transition:border .2s,box-shadow .2s;
 }
-.search input:focus{border-color:var(--accent);box-shadow:0 0 0 4px var(--soft);outline:0}
-.search-icon{position:absolute;left:14px;top:11px;color:var(--muted)}
+.search input:focus{
+  border-color:var(--accent);
+  box-shadow:0 0 0 4px var(--soft);
+  outline:0;
+}
+.search-icon{
+  position:absolute;
+  left:14px;
+  top:10px;
+  color:var(--muted);
+  font-size:19px;
+}
 .head-actions{display:flex;gap:8px}
 .icon{
-  width:40px;height:40px;border:1px solid var(--line);
-  background:var(--paper);border-radius:13px;
+  width:40px;
+  height:40px;
+  border:1px solid var(--line);
+  background:var(--paper);
+  border-radius:13px;
   transition:transform .2s var(--ease),background .2s;
 }
 .icon:hover{transform:translateY(-2px);background:var(--soft)}
-main{width:min(1200px,calc(100% - 36px));margin:32px auto 80px}
+
+/* MAIN */
+main{
+  width:min(1200px,calc(100% - 36px));
+  margin:32px auto 80px;
+}
 .intro{
-  position:relative;overflow:hidden;
-  padding:35px 34px;border:1px solid var(--line);
-  border-radius:25px;background:var(--paper);
-  display:flex;align-items:end;justify-content:space-between;gap:20px;
+  position:relative;
+  overflow:hidden;
+  padding:38px 35px;
+  border:1px solid var(--line);
+  border-radius:25px;
+  background:var(--paper);
+  display:flex;
+  align-items:end;
+  justify-content:space-between;
+  gap:20px;
   box-shadow:var(--shadow);
+  animation:fadeUp .6s var(--ease) both;
 }
 .intro:after{
-  content:"";position:absolute;width:330px;height:330px;
-  border-radius:50%;right:-100px;top:-180px;
+  content:"";
+  position:absolute;
+  width:360px;
+  height:360px;
+  border-radius:50%;
+  right:-100px;
+  top:-190px;
   background:radial-gradient(circle,var(--soft),transparent 70%);
   pointer-events:none;
 }
 .eyebrow{
-  font-size:10px;letter-spacing:1.8px;text-transform:uppercase;
-  color:var(--accent);font-weight:900;
+  font-size:10px;
+  letter-spacing:1.8px;
+  text-transform:uppercase;
+  color:var(--accent);
+  font-weight:900;
 }
 .intro h1{
-  font-size:clamp(34px,5.5vw,58px);letter-spacing:-3px;
-  line-height:1.02;margin:12px 0;
+  font-size:clamp(34px,5.5vw,58px);
+  letter-spacing:-3px;
+  line-height:1.02;
+  margin:12px 0;
 }
-.intro p{color:var(--muted);font-size:14px;margin:0;line-height:1.6}
-.intro-note{font-size:12px;color:var(--muted);max-width:190px;line-height:1.6;text-align:right;z-index:1}
+.intro p{
+  color:var(--muted);
+  font-size:14px;
+  margin:0;
+  line-height:1.6;
+}
+.intro-note{
+  font-size:12px;
+  color:var(--muted);
+  max-width:190px;
+  line-height:1.6;
+  text-align:right;
+  z-index:1;
+}
+
+/* NAVIGATION */
 .tabs{
-  display:flex;gap:8px;margin:24px 0 15px;
-  overflow:auto;scrollbar-width:none;padding-bottom:3px;
+  display:flex;
+  gap:8px;
+  margin:24px 0 15px;
+  overflow:auto;
+  scrollbar-width:none;
+  padding-bottom:3px;
 }
+.tabs::-webkit-scrollbar,.chips::-webkit-scrollbar{display:none}
 .tabs button,.chips button{
-  border:1px solid var(--line);background:var(--paper);
-  padding:10px 15px;border-radius:99px;font-size:12px;
-  font-weight:750;white-space:nowrap;
+  border:1px solid var(--line);
+  background:var(--paper);
+  padding:10px 15px;
+  border-radius:99px;
+  font-size:12px;
+  font-weight:750;
+  white-space:nowrap;
   transition:transform .22s var(--ease),background .22s,color .22s,border .22s;
 }
 .tabs button:hover,.chips button:hover{transform:translateY(-2px)}
 .tabs button.active,.chips button.active{
-  background:var(--ink);color:var(--bg);border-color:var(--ink)
+  background:var(--ink);
+  color:var(--bg);
+  border-color:var(--ink);
 }
-.tabs button:active,.chips button:active{transform:scale(.96)}
-.chips{display:flex;gap:8px;overflow:auto;padding:2px 1px 12px;scrollbar-width:none}
-.chips button{padding:8px 13px;color:var(--muted)}
+.tabs button[data-view="shorts"]{
+  background:#171717;
+  color:white;
+  border-color:#171717;
+}
+.tabs button[data-view="shorts"].active{
+  background:var(--accent);
+  border-color:var(--accent);
+}
+.chips{
+  display:flex;
+  gap:8px;
+  overflow:auto;
+  padding:2px 1px 12px;
+  scrollbar-width:none;
+}
+.chips button{
+  padding:8px 13px;
+  color:var(--muted);
+}
 .section-head{
-  display:flex;align-items:center;justify-content:space-between;
-  gap:12px;margin:27px 0 14px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  margin:27px 0 14px;
 }
-.section-head h2{font-size:21px;letter-spacing:-.7px;margin:0}
+.section-head h2{
+  font-size:21px;
+  letter-spacing:-.7px;
+  margin:0;
+}
 .section-head span{font-size:11px;color:var(--muted)}
 .subheading{font-size:12px;color:var(--muted);margin-top:5px}
-.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+
+/* VIDEO GRID */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:18px;
+}
 .card{
-  background:var(--paper);border:1px solid var(--line);
-  border-radius:18px;overflow:hidden;min-width:0;cursor:pointer;
-  animation:cardIn .55s var(--ease) both;
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:18px;
+  overflow:hidden;
+  min-width:0;
+  cursor:pointer;
+  animation:cardIn .5s var(--ease) both;
   transition:transform .32s var(--ease),box-shadow .32s,border-color .32s;
 }
 .card:hover{
-  transform:translateY(-5px);box-shadow:var(--shadow);
+  transform:translateY(-5px);
+  box-shadow:var(--shadow);
   border-color:color-mix(in srgb,var(--accent) 40%,var(--line));
 }
-.thumb{aspect-ratio:16/9;background:var(--paper2);position:relative;overflow:hidden}
+.thumb{
+  aspect-ratio:16/9;
+  background:var(--paper2);
+  position:relative;
+  overflow:hidden;
+}
 .thumb img{
-  width:100%;height:100%;object-fit:cover;display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
   transition:transform .6s var(--ease),filter .4s;
 }
 .card:hover .thumb img{transform:scale(1.045)}
 .play{
-  position:absolute;bottom:11px;left:12px;
-  background:#fff;color:#222;width:36px;height:36px;
-  border-radius:12px;display:grid;place-items:center;
-  box-shadow:0 4px 14px #0003;transition:transform .25s;
+  position:absolute;
+  bottom:11px;
+  left:12px;
+  background:#fff;
+  color:#222;
+  width:36px;
+  height:36px;
+  border-radius:12px;
+  display:grid;
+  place-items:center;
+  box-shadow:0 4px 14px #0003;
+  transition:transform .25s;
 }
 .card:hover .play{transform:scale(1.1)}
-.progress-track{height:3px;background:#0002;position:absolute;bottom:0;left:0;right:0}
+.progress-track{
+  height:3px;
+  background:#0004;
+  position:absolute;
+  bottom:0;
+  left:0;
+  right:0;
+}
 .progress-fill{height:100%;background:#7668ff;width:0}
 .card-body{padding:14px 15px 15px}
-.card h3{font-size:14px;line-height:1.45;margin:0 0 10px;min-height:40px;letter-spacing:-.2px}
-.byline{display:flex;align-items:center;justify-content:space-between;gap:8px;color:var(--muted);font-size:11px}
-.byline span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.card h3{
+  font-size:14px;
+  line-height:1.45;
+  margin:0 0 10px;
+  min-height:40px;
+  letter-spacing:-.2px;
+}
+.byline{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:8px;
+  color:var(--muted);
+  font-size:11px;
+}
+.byline>span{
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
 .card-tools{display:flex;gap:5px;flex-shrink:0}
 .small-btn{
-  border:0;background:var(--soft);color:var(--accent);
-  border-radius:9px;padding:6px 9px;font-size:12px;
+  border:0;
+  background:var(--soft);
+  color:var(--accent);
+  border-radius:9px;
+  padding:6px 9px;
+  font-size:12px;
 }
 .small-btn:hover{filter:brightness(.96)}
-.empty{
-  display:none;text-align:center;padding:50px 15px;color:var(--muted);
-  background:var(--paper);border:1px dashed var(--line);border-radius:17px;
+
+/* CONTINUE WATCHING */
+.continue-section{display:none}
+.continue-section.show{display:block}
+.continue-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:14px;
 }
-.empty strong{display:block;color:var(--ink);margin-bottom:8px}
+.continue-card{
+  min-width:0;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:9px;
+  cursor:pointer;
+  transition:transform .25s var(--ease),border-color .25s;
+}
+.continue-card:hover{
+  transform:translateY(-3px);
+  border-color:var(--accent);
+}
+.continue-card img{
+  width:105px;
+  aspect-ratio:16/9;
+  object-fit:cover;
+  border-radius:9px;
+}
+.continue-card strong{
+  display:block;
+  font-size:11px;
+  line-height:1.4;
+}
+.continue-card small{
+  display:block;
+  color:var(--muted);
+  font-size:10px;
+  margin-top:5px;
+}
+
+/* EMPTY */
+.empty{
+  display:none;
+  text-align:center;
+  padding:50px 15px;
+  color:var(--muted);
+  background:var(--paper);
+  border:1px dashed var(--line);
+  border-radius:17px;
+}
+.empty strong{
+  display:block;
+  color:var(--ink);
+  margin-bottom:8px;
+}
+
+/* PLAYER */
 .player{
-  display:none;margin:22px 0 30px;
+  display:none;
+  margin:22px 0 30px;
   animation:fadeUp .4s var(--ease);
 }
 .player.show{display:block}
-.player-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
-.back{border:0;background:none;color:var(--muted);font-size:12px;font-weight:800;padding:8px 0}
-.player-box{
-  aspect-ratio:16/9;background:#080808;border-radius:19px;
-  overflow:hidden;position:relative;transition:all .3s;
+.player-top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:12px;
 }
-.player-box #ytPlayer,.player-box iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-.player.theater .player-box{aspect-ratio:21/9;border-radius:12px}
+.back{
+  border:0;
+  background:none;
+  color:var(--muted);
+  font-size:12px;
+  font-weight:800;
+  padding:8px 0;
+}
+.player-box{
+  aspect-ratio:16/9;
+  background:#080808;
+  border-radius:19px;
+  overflow:hidden;
+  position:relative;
+  transition:all .3s;
+}
+.player-box #ytPlayer,.player-box iframe{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  border:0;
+}
+.player.theater .player-box{
+  aspect-ratio:21/9;
+  border-radius:12px;
+}
 .player-info{padding:15px 2px}
-.player-info h2{font-size:22px;letter-spacing:-.7px;margin:4px 0 12px}
-.player-info p{font-size:12px;color:var(--muted);line-height:1.7}
+.player-info h2{
+  font-size:22px;
+  letter-spacing:-.7px;
+  margin:4px 0 12px;
+}
+.player-info p{
+  font-size:12px;
+  color:var(--muted);
+  line-height:1.7;
+}
 .player-actions{display:flex;flex-wrap:wrap;gap:8px}
 .player-actions button,.player-actions select{
-  border:1px solid var(--line);background:var(--paper);
-  padding:9px 12px;border-radius:11px;font-size:12px;
+  border:1px solid var(--line);
+  background:var(--paper);
+  padding:9px 12px;
+  border-radius:11px;
+  font-size:12px;
+  transition:border .2s,background .2s;
 }
 .player-actions button:hover{border-color:var(--accent)}
 .player-status{font-size:11px;color:var(--muted);margin-top:10px}
+
+/* PANELS */
 .profile-panel,.playlist-panel{
-  display:none;margin:20px 0;padding:22px;
-  border:1px solid var(--line);border-radius:20px;
-  background:var(--paper);animation:fadeUp .35s var(--ease);
+  display:none;
+  margin:20px 0;
+  padding:22px;
+  border:1px solid var(--line);
+  border-radius:20px;
+  background:var(--paper);
+  animation:fadeUp .35s var(--ease);
 }
 .profile-panel.show,.playlist-panel.show{display:block}
-.panel-top{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.panel-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+}
 .panel-top h2{margin:0;font-size:21px;letter-spacing:-.6px}
-.close-panel{border:1px solid var(--line);background:var(--paper2);border-radius:10px;padding:8px 11px}
-.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:18px}
-.stat-box{padding:17px 13px;border:1px solid var(--line);border-radius:14px;background:var(--bg)}
-.stat-box strong{display:block;font-size:22px;letter-spacing:-1px}
+.close-panel{
+  border:1px solid var(--line);
+  background:var(--paper2);
+  border-radius:10px;
+  padding:8px 11px;
+}
+.stats-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+  margin-top:18px;
+}
+.stat-box{
+  padding:17px 13px;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:var(--bg);
+}
+.stat-box strong{
+  display:block;
+  font-size:22px;
+  letter-spacing:-1px;
+}
 .stat-box span{font-size:10px;color:var(--muted)}
-.panel-note{font-size:11px;color:var(--muted);line-height:1.6;margin-top:16px}
+.panel-note{
+  font-size:11px;
+  color:var(--muted);
+  line-height:1.6;
+  margin-top:16px;
+}
 .playlist-create{display:flex;gap:8px;margin:18px 0}
 .playlist-create input{
-  min-width:0;flex:1;border:1px solid var(--line);
-  background:var(--bg);color:var(--ink);border-radius:11px;padding:11px 13px;
+  min-width:0;
+  flex:1;
+  border:1px solid var(--line);
+  background:var(--bg);
+  color:var(--ink);
+  border-radius:11px;
+  padding:11px 13px;
 }
 .action-btn{
-  border:0;background:var(--ink);color:var(--bg);
-  border-radius:11px;padding:10px 14px;font-size:12px;font-weight:800;
+  border:0;
+  background:var(--ink);
+  color:var(--bg);
+  border-radius:11px;
+  padding:10px 14px;
+  font-size:12px;
+  font-weight:800;
 }
 .playlist-list{display:grid;gap:9px}
 .playlist-item{
-  display:flex;align-items:center;justify-content:space-between;
-  gap:10px;padding:12px;border:1px solid var(--line);
-  border-radius:12px;background:var(--bg);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  padding:12px;
+  border:1px solid var(--line);
+  border-radius:12px;
+  background:var(--bg);
 }
 .playlist-item strong{font-size:13px}
-.playlist-item small{display:block;color:var(--muted);font-size:10px;margin-top:4px}
-.playlist-item button{border:1px solid var(--line);background:var(--paper);border-radius:9px;padding:7px 10px;font-size:11px}
+.playlist-item small{
+  display:block;
+  color:var(--muted);
+  font-size:10px;
+  margin-top:4px;
+}
+.playlist-item button{
+  border:1px solid var(--line);
+  background:var(--paper);
+  border-radius:9px;
+  padding:7px 10px;
+  font-size:11px;
+}
+
+/* MODAL */
 .modal-backdrop{
-  display:none;position:fixed;inset:0;z-index:40;
-  background:#0008;backdrop-filter:blur(7px);
-  align-items:center;justify-content:center;padding:20px;
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:40;
+  background:#0008;
+  backdrop-filter:blur(7px);
+  align-items:center;
+  justify-content:center;
+  padding:20px;
 }
 .modal-backdrop.show{display:flex;animation:fade .2s}
 .modal{
-  width:min(420px,100%);background:var(--paper);
-  border:1px solid var(--line);border-radius:20px;
-  padding:22px;box-shadow:0 25px 80px #0004;
+  width:min(420px,100%);
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:22px;
+  box-shadow:0 25px 80px #0004;
   animation:modalIn .3s var(--ease);
 }
 .modal h3{margin:0 0 8px;font-size:19px}
 .modal p{font-size:12px;color:var(--muted);line-height:1.6}
-.modal select{width:100%;padding:11px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);margin:12px 0}
+.modal select{
+  width:100%;
+  padding:11px;
+  border:1px solid var(--line);
+  border-radius:10px;
+  background:var(--bg);
+  color:var(--ink);
+  margin:12px 0;
+}
 .modal-actions{display:flex;gap:8px;justify-content:flex-end}
-.modal-actions button{border:1px solid var(--line);background:var(--paper2);padding:9px 13px;border-radius:10px;font-size:12px}
+.modal-actions button{
+  border:1px solid var(--line);
+  background:var(--paper2);
+  padding:9px 13px;
+  border-radius:10px;
+  font-size:12px;
+}
 .modal-actions .primary{background:var(--ink);color:var(--bg)}
+
+/* NOTICE + TOAST */
 .notice{
-  margin-top:40px;padding:17px 19px;border-radius:15px;
-  background:var(--paper);border:1px solid var(--line);
-  font-size:11px;color:var(--muted);line-height:1.7;
+  margin-top:40px;
+  padding:17px 19px;
+  border-radius:15px;
+  background:var(--paper);
+  border:1px solid var(--line);
+  font-size:11px;
+  color:var(--muted);
+  line-height:1.7;
 }
 .toast{
-  position:fixed;bottom:22px;left:50%;z-index:60;
-  transform:translate(-50%,18px);opacity:0;pointer-events:none;
-  background:#25251f;color:#fff;border-radius:12px;
-  padding:11px 16px;font-size:12px;
+  position:fixed;
+  bottom:22px;
+  left:50%;
+  z-index:60;
+  transform:translate(-50%,18px);
+  opacity:0;
+  pointer-events:none;
+  background:#25251f;
+  color:#fff;
+  border-radius:12px;
+  padding:11px 16px;
+  font-size:12px;
   box-shadow:0 8px 30px #0003;
   transition:opacity .25s,transform .25s;
-  max-width:calc(100% - 30px);text-align:center;
+  max-width:calc(100% - 30px);
+  text-align:center;
 }
 .toast.show{opacity:1;transform:translate(-50%,0)}
-.skeleton{
-  background:linear-gradient(100deg,var(--paper2) 20%,var(--line) 40%,var(--paper2) 60%);
-  background-size:200% 100%;animation:shimmer 1.4s infinite;
+
+/* SHORTS MODE */
+#shortsView{
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:50;
+  background:#090909;
+  color:white;
+  overflow:hidden;
 }
-@keyframes cardIn{from{opacity:0;transform:translateY(15px) scale(.985)}to{opacity:1;transform:translateY(0) scale(1)}}
-@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+#shortsView.show{display:block}
+body.shorts-mode{overflow:hidden}
+body.shorts-mode header{display:none}
+body.shorts-mode main{visibility:hidden}
+#shortsFeed{
+  width:100%;
+  height:100%;
+  overflow-y:auto;
+  scroll-snap-type:y mandatory;
+  overscroll-behavior:contain;
+  scrollbar-width:none;
+  scroll-behavior:smooth;
+}
+#shortsFeed::-webkit-scrollbar{display:none}
+.short-card{
+  width:100%;
+  height:100%;
+  min-height:100%;
+  position:relative;
+  scroll-snap-align:start;
+  scroll-snap-stop:always;
+  background:#111;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+}
+.short-player{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+}
+.short-player iframe{
+  width:100%;
+  height:100%;
+  border:0;
+}
+.short-overlay{
+  position:absolute;
+  inset:auto 0 0;
+  z-index:2;
+  padding:100px 75px 35px 18px;
+  background:linear-gradient(transparent,#000d);
+  pointer-events:none;
+}
+.short-overlay h3{
+  font-size:19px;
+  margin:0 0 8px;
+  max-width:100%;
+  line-height:1.4;
+}
+.short-overlay p{
+  font-size:12px;
+  color:#ddd;
+  margin:0 0 5px;
+  line-height:1.5;
+}
+.short-actions{
+  position:absolute;
+  right:13px;
+  bottom:100px;
+  z-index:5;
+  display:grid;
+  gap:12px;
+}
+.short-actions button,.shorts-close{
+  border:1px solid #ffffff40;
+  background:#171717cc;
+  color:white;
+  border-radius:50%;
+  width:44px;
+  height:44px;
+  font-size:17px;
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  transition:transform .2s,background .2s;
+}
+.short-actions button:hover{background:#ffffff30;transform:scale(1.08)}
+.shorts-close{
+  position:absolute;
+  z-index:8;
+  top:max(16px,env(safe-area-inset-top));
+  left:15px;
+  width:auto;
+  height:auto;
+  border-radius:12px;
+  padding:10px 14px;
+  font-size:12px;
+}
+.short-play-hint{
+  position:absolute;
+  z-index:6;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  border:0;
+  background:#000b;
+  color:white;
+  padding:13px 18px;
+  border-radius:30px;
+}
+#shortsMessage{
+  position:absolute;
+  z-index:9;
+  bottom:18px;
+  left:50%;
+  transform:translateX(-50%);
+  color:white;
+  font-size:12px;
+  pointer-events:none;
+  white-space:nowrap;
+}
+@media(min-width:700px){
+  .short-card{
+    width:min(460px,100%);
+    margin:auto;
+    border-left:1px solid #333;
+    border-right:1px solid #333;
+  }
+  #shortsFeed{scrollbar-width:none}
+}
+
+/* ANIMATIONS */
+@keyframes cardIn{
+  from{opacity:0;transform:translateY(15px) scale(.985)}
+  to{opacity:1;transform:translateY(0) scale(1)}
+}
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(12px)}
+  to{opacity:1;transform:translateY(0)}
+}
 @keyframes fade{from{opacity:0}to{opacity:1}}
-@keyframes modalIn{from{opacity:0;transform:translateY(12px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes modalIn{
+  from{opacity:0;transform:translateY(12px) scale(.97)}
+  to{opacity:1;transform:translateY(0) scale(1)}
+}
 @keyframes shimmer{to{background-position:-200% 0}}
-@media(min-width:1000px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
-@media(max-width:800px){
+
+@media(max-width:900px){
   .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .continue-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   header{padding:0 16px;gap:12px}
   .stats-grid{grid-template-columns:repeat(2,1fr)}
 }
@@ -257,7 +767,7 @@ main{width:min(1200px,calc(100% - 36px));margin:32px auto 80px}
   header{height:61px;gap:9px}
   .logo{font-size:16px}
   .search input{height:38px;font-size:11px;padding-left:33px}
-  .search-icon{left:11px;top:10px}
+  .search-icon{left:11px;top:8px}
   .icon{width:35px;height:35px}
   main{width:calc(100% - 26px);margin-top:21px}
   .intro{padding:25px 21px;border-radius:19px;align-items:start}
@@ -268,25 +778,36 @@ main{width:min(1200px,calc(100% - 36px));margin:32px auto 80px}
   .thumb{height:100%;aspect-ratio:auto;min-height:112px}
   .card-body{padding:12px}
   .card h3{font-size:13px;min-height:0}
+  .continue-grid{grid-template-columns:1fr}
+  .continue-card img{width:95px}
   .player-box{border-radius:13px}
   .player-info h2{font-size:18px}
   .player.theater .player-box{aspect-ratio:16/9}
   .stats-grid{gap:8px}
   .stat-box{padding:13px}
   .stat-box strong{font-size:19px}
+  .short-overlay{padding-bottom:max(28px,env(safe-area-inset-bottom))}
 }
 @media(prefers-reduced-motion:reduce){
-  *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}
+  *,*::before,*::after{
+    scroll-behavior:auto!important;
+    animation-duration:.01ms!important;
+    transition-duration:.01ms!important;
+  }
 }
 </style>
 </head>
+
 <body>
+
 <header>
   <div class="logo">BEST<span>FEED.</span></div>
+
   <div class="search">
     <span class="search-icon">⌕</span>
     <input id="search" type="search" placeholder="Search videos or creators…" autocomplete="off">
   </div>
+
   <div class="head-actions">
     <button class="icon" id="profileBtn" aria-label="Profile" title="Profile">♙</button>
     <button class="icon" id="theme" aria-label="Toggle theme" title="Toggle theme">◐</button>
@@ -300,13 +821,17 @@ main{width:min(1200px,calc(100% - 36px));margin:32px auto 80px}
       <h1>Find your kind<br>of interesting.</h1>
       <p id="subtitle">A little inspiration for your next watch.</p>
     </div>
-    <div class="intro-note">Your feed learns from what you choose to watch. Your activity stays in this browser.</div>
+    <div class="intro-note">
+      Your feed learns from what you choose to watch.
+      Your activity stays in this browser.
+    </div>
   </section>
 
   <nav class="tabs" aria-label="Feed views">
     <button class="active" data-view="forYou">For you</button>
     <button data-view="all">All videos</button>
     <button data-view="trending">Trending</button>
+    <button data-view="shorts" id="shortsTab">▶ Shorts</button>
     <button data-view="saved">Saved <span id="savedCount">0</span></button>
     <button data-view="playlists">Playlists</button>
   </nav>
@@ -318,13 +843,18 @@ main{width:min(1200px,calc(100% - 36px));margin:32px auto 80px}
       <h2>Your viewing profile</h2>
       <button class="close-panel" data-close="profile">✕</button>
     </div>
+
     <div class="stats-grid">
       <div class="stat-box"><strong id="statTime">0m</strong><span>Watch time</span></div>
       <div class="stat-box"><strong id="statWatched">0</strong><span>Videos watched</span></div>
       <div class="stat-box"><strong id="statSaved">0</strong><span>Saved videos</span></div>
       <div class="stat-box"><strong id="statPlaylists">0</strong><span>Playlists</span></div>
     </div>
-    <p class="panel-note">These statistics are calculated from your activity on this browser. YouTube playback can occasionally report approximate watch time.</p>
+
+    <p class="panel-note">
+      These statistics are calculated from your activity on this browser.
+      YouTube playback may report approximate watch time.
+    </p>
     <button class="close-panel" id="resetStats">Reset watch history</button>
   </section>
 
@@ -333,10 +863,12 @@ main{width:min(1200px,calc(100% - 36px));margin:32px auto 80px}
       <h2>Your playlists</h2>
       <button class="close-panel" data-close="playlists">✕</button>
     </div>
+
     <form class="playlist-create" id="playlistForm">
       <input id="playlistName" maxlength="35" placeholder="New playlist name…" required>
       <button class="action-btn" type="submit">Create</button>
     </form>
+
     <div class="playlist-list" id="playlistList"></div>
   </section>
 
@@ -345,13 +877,22 @@ main{width:min(1200px,calc(100% - 36px));margin:32px auto 80px}
       <button class="back" id="back">← Back to feed</button>
       <span class="eyebrow">Now playing</span>
     </div>
-    <div class="player-box" id="playerBox"><div id="ytPlayer"></div></div>
+
+    <div class="player-box" id="playerBox">
+      <div id="ytPlayer"></div>
+    </div>
+
     <div class="player-info">
       <h2 id="playerTitle"></h2>
+
       <div class="player-actions">
         <button id="playerSave">♡ Save</button>
+        <button id="playerLike">👍 Like</button>
+        <button id="playerDislike">👎 Dislike</button>
+        <button id="playerNotInterested">Not interested</button>
         <button id="previousBtn">← Previous</button>
         <button id="nextBtn">Next →</button>
+
         <select id="speed" aria-label="Playback speed">
           <option value="0.5">0.5×</option>
           <option value="0.75">0.75×</option>
@@ -360,13 +901,25 @@ main{width:min(1200px,calc(100% - 36px));margin:32px auto 80px}
           <option value="1.5">1.5×</option>
           <option value="2">2×</option>
         </select>
+
         <button id="theaterBtn">Theater</button>
         <button id="fullBtn">Fullscreen</button>
         <button id="playerClose">Close</button>
       </div>
+
       <p id="playerDescription"></p>
       <div class="player-status" id="playerStatus">Ready to play.</div>
     </div>
+  </section>
+
+  <section class="continue-section" id="continueSection">
+    <div class="section-head">
+      <div>
+        <h2>Continue watching</h2>
+        <div class="subheading">Pick up where you left off.</div>
+      </div>
+    </div>
+    <div class="continue-grid" id="continueGrid"></div>
   </section>
 
   <div class="section-head">
@@ -378,6 +931,7 @@ main{width:min(1200px,calc(100% - 36px));margin:32px auto 80px}
   </div>
 
   <section class="grid" id="grid"></section>
+
   <div class="empty" id="empty">
     <strong id="emptyTitle">Nothing here yet.</strong>
     <span id="emptyText">Try another search or category.</span>
@@ -385,10 +939,21 @@ main{width:min(1200px,calc(100% - 36px));margin:32px auto 80px}
 
   <div class="notice">
     <strong>About BEST FEED</strong><br>
-    Recommendations use your local watch activity. Saved videos, playlists, theme and watch history are stored in this browser only. BEST FEED does not have a server or account sync. Video playback is provided by YouTube, and some videos may not allow embedded playback.
+    Recommendations use your local watch activity.
+    Saved videos, playlists, theme and watch history are stored in this browser only.
+    BEST FEED does not have a server or account sync.
+    Video playback is provided by YouTube, and some videos may not allow embedded playback.
   </div>
 </main>
 
+<!-- SHORTS VIEW -->
+<section id="shortsView" aria-label="Shorts feed">
+  <button id="shortsClose" class="shorts-close">✕ Close</button>
+  <div id="shortsFeed"></div>
+  <div id="shortsMessage"></div>
+</section>
+
+<!-- PLAYLIST MODAL -->
 <div class="modal-backdrop" id="playlistModal">
   <div class="modal">
     <h3>Add to playlist</h3>
@@ -403,603 +968,1081 @@ main{width:min(1200px,calc(100% - 36px));margin:32px auto 80px}
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
+<!-- DATA FILES -->
 <script src="videos.js"></script>
+<script src="shorts.js"></script>
+<script src="algorithm.js"></script>
+
 <script>
 (() => {
-  "use strict";
+"use strict";
 
-  const $ = s => document.querySelector(s);
-  const read = (key, fallback) => {
-    try {
-      const value = JSON.parse(localStorage.getItem(key));
-      return value ?? fallback;
-    } catch { return fallback; }
-  };
-  const write = (key, value) => {
-    try { localStorage.setItem(key, JSON.stringify(value)); return true; }
-    catch { toast("Browser storage is full. Some changes may not save."); return false; }
-  };
-  const esc = value => String(value ?? "").replace(/[&<>"']/g, c => ({
-    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
-  })[c]);
+const $ = s => document.querySelector(s);
 
-  function getId(url) {
-    try {
-      const u = new URL(url);
-      const id = u.hostname.includes("youtu.be")
-        ? u.pathname.slice(1)
-        : u.searchParams.get("v") ||
-          u.pathname.match(/\/(?:embed|shorts|live)\/([^/?]+)/)?.[1];
-      return /^[\w-]{11}$/.test(id || "") ? id : null;
-    } catch { return null; }
+const read = (key, fallback) => {
+  try {
+    const value = JSON.parse(localStorage.getItem(key));
+    return value ?? fallback;
+  } catch {
+    return fallback;
+  }
+};
+
+const write = (key, value) => {
+  try {
+    localStorage.setItem(key, JSON.stringify(value));
+    return true;
+  } catch {
+    toast("Browser storage is full. Some changes may not save.");
+    return false;
+  }
+};
+
+const esc = value => String(value ?? "").replace(/[&<>"']/g, c => ({
+  "&":"&amp;",
+  "<":"&lt;",
+  ">":"&gt;",
+  '"':"&quot;",
+  "'":"&#39;"
+})[c]);
+
+function getId(url) {
+  try {
+    const u = new URL(url);
+    const id = u.hostname.includes("youtu.be")
+      ? u.pathname.slice(1)
+      : u.searchParams.get("v") ||
+        u.pathname.match(/\/(?:embed|shorts|live)\/([^/?]+)/)?.[1];
+
+    return /^[\w-]{11}$/.test(id || "") ? id : null;
+  } catch {
+    return null;
+  }
+}
+
+/* VIDEO LIBRARY */
+const videos = (
+  Array.isArray(window.BEST_FEED_VIDEOS)
+    ? window.BEST_FEED_VIDEOS
+    : []
+).map((v, i) => ({
+  ...v,
+  id:getId(v.url),
+  index:i,
+  title:String(v.title || "Untitled video"),
+  creator:String(v.creator || "YouTube"),
+  category:String(v.category || "Other"),
+  description:String(v.description || "")
+})).filter(v => v.id);
+
+const validIds = new Set(videos.map(v => v.id));
+
+/* LOCAL DATA */
+let stats = read("bf_v2_stats", {});
+let saved = new Set(
+  read("bf_v2_saved", []).filter(id => validIds.has(id))
+);
+
+let playlists = read("bf_v2_playlists", []);
+let searches = read("bf_v2_searches", {});
+
+let view = "forYou";
+let category = "All";
+let current = null;
+let yt = null;
+let playerReady = false;
+let toastTimer = null;
+let trackTimer = null;
+let modalVideoId = null;
+let currentList = [];
+let activePlaylistId = null;
+let apiFailed = false;
+
+if (!Array.isArray(playlists)) playlists = [];
+
+playlists = playlists.map(p => ({
+  id:String(p.id || ""),
+  name:String(p.name || "Playlist").slice(0,35),
+  videos:Array.isArray(p.videos)
+    ? p.videos.filter(id => validIds.has(id))
+    : []
+})).filter(p => p.id);
+
+function toast(message) {
+  const el = $("#toast");
+  el.textContent = message;
+  el.classList.add("show");
+
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => {
+    el.classList.remove("show");
+  }, 2300);
+}
+
+function stat(id) {
+  if (!stats[id] || typeof stats[id] !== "object") {
+    stats[id] = {
+      seconds:0,
+      plays:0,
+      completed:0,
+      skips:0,
+      lastPosition:0,
+      duration:0,
+      lastSeen:0,
+      likes:0,
+      dislikes:0,
+      notInterested:0
+    };
   }
 
-  const videos = (Array.isArray(window.BEST_FEED_VIDEOS) ? window.BEST_FEED_VIDEOS : [])
-    .map((v, i) => ({
-      ...v,
-      id: getId(v.url),
-      index: i,
-      title: String(v.title || "Untitled video"),
-      creator: String(v.creator || "YouTube"),
-      category: String(v.category || "Other"),
-      description: String(v.description || "")
-    }))
-    .filter(v => v.id);
+  const s = stats[id];
 
-  const validIds = new Set(videos.map(v => v.id));
-  let stats = read("bf_v2_stats", {});
-  let saved = new Set(read("bf_v2_saved", []).filter(id => validIds.has(id)));
-  let playlists = read("bf_v2_playlists", []);
-  let view = "forYou";
-  let category = "All";
-  let current = null;
-  let yt = null;
-  let playerReady = false;
-  let toastTimer = null;
-  let trackTimer = null;
-  let modalVideoId = null;
-  let currentList = [];
+  [
+    "seconds","plays","completed","skips",
+    "lastPosition","duration","lastSeen",
+    "likes","dislikes","notInterested"
+  ].forEach(key => {
+    s[key] = Math.max(0, Number(s[key]) || 0);
+  });
 
-  if (!Array.isArray(playlists)) playlists = [];
-  playlists = playlists.map(p => ({
-    id: String(p.id || ""),
-    name: String(p.name || "Playlist").slice(0,35),
-    videos: Array.isArray(p.videos) ? p.videos.filter(id => validIds.has(id)) : []
-  })).filter(p => p.id);
+  return s;
+}
 
-  function toast(message) {
-    const el = $("#toast");
-    el.textContent = message;
-    el.classList.add("show");
-    clearTimeout(toastTimer);
-    toastTimer = setTimeout(() => el.classList.remove("show"), 2300);
-  }
+function totalWatchTime() {
+  return Object.values(stats).reduce(
+    (n, s) => n + (Number(s.seconds) || 0),
+    0
+  );
+}
 
-  function stat(id) {
-    if (!stats[id] || typeof stats[id] !== "object") {
-      stats[id] = {seconds:0,plays:0,completed:0,skips:0,lastPosition:0};
-    }
-    const s = stats[id];
-    s.seconds = Math.max(0, Number(s.seconds) || 0);
-    s.plays = Math.max(0, Number(s.plays) || 0);
-    s.completed = Math.max(0, Number(s.completed) || 0);
-    s.skips = Math.max(0, Number(s.skips) || 0);
-    s.lastPosition = Math.max(0, Number(s.lastPosition) || 0);
-    return s;
-  }
+function affinity(cat) {
+  return videos
+    .filter(v => v.category === cat)
+    .reduce((sum, v) => sum + (stats[v.id]?.seconds || 0), 0);
+}
 
-  function totalWatchTime() {
-    return Object.values(stats).reduce((n,s) => n + (Number(s.seconds) || 0), 0);
-  }
-
-  function affinity(cat) {
-    return videos.filter(v => v.category === cat)
-      .reduce((sum,v) => sum + (stats[v.id]?.seconds || 0), 0);
-  }
-
-  function personalized() {
-    const total = totalWatchTime();
-    if (total < 45) {
-      return [...videos].sort((a,b) =>
-        Number(!!b.featured) - Number(!!a.featured) || a.index - b.index
-      );
-    }
-    return [...videos].sort((a,b) => {
-      const score = v => {
-        const s = stat(v.id);
-        return affinity(v.category) * .45 + s.seconds * 1.8 +
-          s.completed * 25 + (v.featured ? 5 : 0) - s.skips * 8;
-      };
-      return score(b) - score(a) || a.index - b.index;
-    });
-  }
-
-  function trending() {
-    return [...videos].sort((a,b) => {
-      const score = v => {
-        const s = stats[v.id] || {};
-        return (s.seconds || 0) + (s.plays || 0) * 12 + (s.completed || 0) * 20;
-      };
-      return score(b) - score(a) || Number(!!b.featured) - Number(!!a.featured) || a.index-b.index;
-    });
-  }
-
-  function getList() {
-    let list = view === "saved" ? videos.filter(v => saved.has(v.id))
-      : view === "trending" ? trending()
-      : view === "forYou" ? personalized()
-      : videos;
-
-    if (category !== "All") list = list.filter(v => v.category === category);
-
-    const q = $("#search").value.trim().toLowerCase();
-    if (q) list = list.filter(v =>
-      [v.title,v.creator,v.category,v.description].join(" ").toLowerCase().includes(q)
+/* RECOMMENDATION */
+function personalized() {
+  if (window.BFAlgorithm) {
+    return window.BFAlgorithm.rankLong(
+      videos,
+      stats,
+      [...saved],
+      searches
     );
-    return list;
   }
 
-  function renderCategories() {
-    const cats = ["All", ...new Set(videos.map(v => v.category))];
-    $("#categories").innerHTML = cats.map(c =>
-      `<button class="${c === category ? "active" : ""}" data-cat="${esc(c)}">${esc(c)}</button>`
-    ).join("");
+  return [...videos].sort((a,b) =>
+    Number(!!b.featured) - Number(!!a.featured) ||
+    a.index - b.index
+  );
+}
+
+function trending() {
+  return [...videos].sort((a,b) => {
+    const score = v => {
+      const s = stats[v.id] || {};
+      return (s.seconds || 0) * 1.5 +
+        (s.plays || 0) * 8 +
+        (s.completed || 0) * 15 +
+        (s.likes || 0) * 12 -
+        (s.dislikes || 0) * 10;
+    };
+
+    return score(b) - score(a) ||
+      Number(!!b.featured) - Number(!!a.featured) ||
+      a.index - b.index;
+  });
+}
+
+function getList() {
+  let list;
+
+  if (activePlaylistId) {
+    const p = playlists.find(x => x.id === activePlaylistId);
+    list = p
+      ? p.videos.map(id => videos.find(v => v.id === id)).filter(Boolean)
+      : [];
+  } else if (view === "saved") {
+    list = videos.filter(v => saved.has(v.id));
+  } else if (view === "trending") {
+    list = trending();
+  } else if (view === "forYou") {
+    list = personalized();
+  } else {
+    list = videos;
   }
 
-  function progressFor(id) {
-    const s = stats[id];
-    if (!s || !s.lastPosition) return 0;
-    const duration = Number(s.duration) || 0;
-    if (!duration) return 0;
-    return Math.min(100, Math.max(0, s.lastPosition / duration * 100));
+  if (category !== "All") {
+    list = list.filter(v => v.category === category);
   }
 
-  function card(v,i) {
-    const progress = progressFor(v.id);
-    const thumb = `https://i.ytimg.com/vi/${v.id}/hqdefault.jpg`;
-    return `
-      <article class="card" data-id="${v.id}" style="animation-delay:${Math.min(i*35,245)}ms" tabindex="0" aria-label="Play ${esc(v.title)}">
-        <div class="thumb">
-          <img src="${thumb}" alt="" loading="lazy"
-            onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/${v.id}/mqdefault.jpg'">
-          <span class="play">▶</span>
-          ${progress > 1 ? `<div class="progress-track"><div class="progress-fill" style="width:${progress}%"></div></div>` : ""}
-        </div>
-        <div class="card-body">
-          <h3>${esc(v.title)}</h3>
-          <div class="byline">
-            <span>${esc(v.creator)} · ${esc(v.category)}</span>
-            <div class="card-tools">
-              <button class="small-btn" data-playlist="${v.id}" aria-label="Add to playlist" title="Add to playlist">＋</button>
-              <button class="small-btn" data-save="${v.id}" aria-label="Save video">${saved.has(v.id) ? "♥" : "♡"}</button>
-            </div>
+  const q = $("#search").value.trim().toLowerCase();
+
+  if (q) {
+    list = list.filter(v =>
+      [v.title,v.creator,v.category,v.description]
+        .join(" ")
+        .toLowerCase()
+        .includes(q)
+    );
+  }
+
+  return list;
+}
+
+function renderCategories() {
+  const cats = ["All", ...new Set(videos.map(v => v.category))];
+
+  $("#categories").innerHTML = cats.map(c => `
+    <button class="${c === category ? "active" : ""}"
+      data-cat="${esc(c)}">${esc(c)}</button>
+  `).join("");
+}
+
+function progressFor(id) {
+  const s = stats[id];
+  if (!s || !s.lastPosition) return 0;
+
+  const duration = Number(s.duration) || 0;
+  if (!duration) return 0;
+
+  return Math.min(100, Math.max(0, s.lastPosition / duration * 100));
+}
+
+function card(v, i) {
+  const progress = progressFor(v.id);
+  const thumb = `https://i.ytimg.com/vi/${v.id}/hqdefault.jpg`;
+
+  return `
+    <article class="card"
+      data-id="${v.id}"
+      style="animation-delay:${Math.min(i*35,245)}ms"
+      tabindex="0"
+      aria-label="Play ${esc(v.title)}">
+
+      <div class="thumb">
+        <img src="${thumb}" alt="" loading="lazy"
+          onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/${v.id}/mqdefault.jpg'">
+        <span class="play">▶</span>
+
+        ${progress > 1 ? `
+          <div class="progress-track">
+            <div class="progress-fill" style="width:${progress}%"></div>
+          </div>
+        ` : ""}
+      </div>
+
+      <div class="card-body">
+        <h3>${esc(v.title)}</h3>
+        <div class="byline">
+          <span>${esc(v.creator)} · ${esc(v.category)}</span>
+          <div class="card-tools">
+            <button class="small-btn"
+              data-playlist="${v.id}"
+              aria-label="Add to playlist"
+              title="Add to playlist">＋</button>
+
+            <button class="small-btn"
+              data-save="${v.id}"
+              aria-label="Save video">${saved.has(v.id) ? "♥" : "♡"}</button>
           </div>
         </div>
-      </article>`;
+      </div>
+    </article>
+  `;
+}
+
+/* CONTINUE WATCHING */
+function renderContinue() {
+  const items = videos
+    .filter(v => {
+      const s = stats[v.id];
+      return s && s.lastPosition > 5 &&
+        s.duration > 0 &&
+        s.lastPosition < s.duration - 10;
+    })
+    .sort((a,b) =>
+      (stats[b.id]?.lastSeen || 0) -
+      (stats[a.id]?.lastSeen || 0)
+    )
+    .slice(0,3);
+
+  $("#continueSection").classList.toggle("show", items.length > 0);
+
+  $("#continueGrid").innerHTML = items.map(v => `
+    <div class="continue-card" data-continue="${v.id}">
+      <img src="https://i.ytimg.com/vi/${v.id}/mqdefault.jpg" alt="" loading="lazy">
+      <div>
+        <strong>${esc(v.title)}</strong>
+        <small>${Math.round(progressFor(v.id))}% watched</small>
+      </div>
+    </div>
+  `).join("");
+}
+
+function updateProfile() {
+  const total = totalWatchTime();
+
+  $("#statTime").textContent = total >= 3600
+    ? `${Math.floor(total/3600)}h ${Math.floor(total%3600/60)}m`
+    : `${Math.floor(total/60)}m`;
+
+  $("#statWatched").textContent = Object.values(stats)
+    .filter(s => (s.seconds || 0) > 0).length;
+
+  $("#statSaved").textContent = saved.size;
+  $("#statPlaylists").textContent = playlists.length;
+}
+
+function renderPlaylists() {
+  const list = $("#playlistList");
+
+  if (!playlists.length) {
+    list.innerHTML = `
+      <div style="padding:20px;color:var(--muted);font-size:12px">
+        Create your first playlist above.
+      </div>
+    `;
+    return;
   }
 
-  function updateProfile() {
-    const total = totalWatchTime();
-    $("#statTime").textContent = total >= 3600
-      ? `${Math.floor(total/3600)}h ${Math.floor(total%3600/60)}m`
-      : `${Math.floor(total/60)}m`;
-    $("#statWatched").textContent = Object.values(stats).filter(s => (s.seconds || 0) > 0).length;
-    $("#statSaved").textContent = saved.size;
-    $("#statPlaylists").textContent = playlists.length;
-  }
+  list.innerHTML = playlists.map(p => `
+    <div class="playlist-item">
+      <div>
+        <strong>${esc(p.name)}</strong>
+        <small>${p.videos.length} videos</small>
+      </div>
 
-  function renderPlaylists() {
-    const list = $("#playlistList");
-    if (!playlists.length) {
-      list.innerHTML = `<div class="empty" style="display:block">Create your first playlist above.</div>`;
-      return;
-    }
-    list.innerHTML = playlists.map(p => `
-      <div class="playlist-item">
-        <div><strong>${esc(p.name)}</strong><small>${p.videos.length} videos</small></div>
-        <div style="display:flex;gap:6px">
-          <button data-open-playlist="${esc(p.id)}">Open</button>
-          <button data-delete-playlist="${esc(p.id)}">Delete</button>
-        </div>
-      </div>`).join("");
-  }
+      <div style="display:flex;gap:6px">
+        <button data-open-playlist="${esc(p.id)}">Open</button>
+        <button data-delete-playlist="${esc(p.id)}">Delete</button>
+      </div>
+    </div>
+  `).join("");
+}
 
-  function render() {
-    renderCategories();
-    currentList = getList();
-    $("#grid").innerHTML = currentList.map(card).join("");
-    $("#empty").style.display = currentList.length ? "none" : "block";
-    $("#emptyTitle").textContent = view === "saved" ? "No saved videos yet." : "No videos found.";
-    $("#emptyText").textContent = view === "saved"
+function render() {
+  renderCategories();
+
+  currentList = getList();
+  $("#grid").innerHTML = currentList.map(card).join("");
+
+  $("#empty").style.display = currentList.length ? "none" : "block";
+
+  $("#emptyTitle").textContent =
+    view === "saved" ? "No saved videos yet." : "No videos found.";
+
+  $("#emptyText").textContent =
+    view === "saved"
       ? "Tap the heart on a video to save it here."
       : "Try another search or category.";
-    $("#count").textContent = `${currentList.length} videos`;
-    $("#savedCount").textContent = saved.size;
 
-    const headings = {
-      forYou:["Picked for you","Your feed adapts to what you watch."],
-      all:["Explore everything","Browse the full video collection."],
-      trending:["Trending on this browser","Ranked using local viewing activity, not global YouTube trends."],
-      saved:["Your saved videos","Your personal watch-later collection."],
-      playlists:["Your playlists","Organise videos into collections."]
-    };
-    $("#heading").textContent = headings[view][0];
-    $("#sectionSub").textContent = headings[view][1];
+  $("#count").textContent = `${currentList.length} videos`;
+  $("#savedCount").textContent = saved.size;
 
-    const watched = totalWatchTime();
-    $("#subtitle").textContent = watched < 45
-      ? "Watch a little and your feed will start adapting."
-      : "Your feed is learning from your watch time.";
+  const headings = {
+    forYou:["Picked for you","Your feed adapts to what you watch."],
+    all:["Explore everything","Browse the full video collection."],
+    trending:["Trending on this browser","Ranked using local activity, not global YouTube trends."],
+    saved:["Your saved videos","Your personal watch-later collection."],
+    playlists:["Your playlists","Organise videos into collections."]
+  };
 
-    document.querySelectorAll("[data-view]").forEach(b =>
-      b.classList.toggle("active", b.dataset.view === view)
-    );
-    updateProfile();
-    renderPlaylists();
+  const selected = activePlaylistId
+    ? playlists.find(p => p.id === activePlaylistId)
+    : null;
+
+  $("#heading").textContent = selected
+    ? selected.name
+    : headings[view][0];
+
+  $("#sectionSub").textContent = selected
+    ? "Videos in this playlist."
+    : headings[view][1];
+
+  const watched = totalWatchTime();
+
+  $("#subtitle").textContent = watched < 45
+    ? "Watch a little and your feed will start adapting."
+    : "Your feed is learning from your watch time.";
+
+  document.querySelectorAll("[data-view]").forEach(b => {
+    b.classList.toggle("active", b.dataset.view === view);
+  });
+
+  updateProfile();
+  renderPlaylists();
+  renderContinue();
+}
+
+function showPanel(name) {
+  $("#profilePanel").classList.toggle("show", name === "profile");
+  $("#playlistPanel").classList.toggle("show", name === "playlists");
+
+  if (name) {
+    const target = name === "profile"
+      ? "#profilePanel"
+      : "#playlistPanel";
+
+    $(target).scrollIntoView({
+      behavior:"smooth",
+      block:"nearest"
+    });
   }
+}
 
-  function showPanel(name) {
-    $("#profilePanel").classList.toggle("show", name === "profile");
-    $("#playlistPanel").classList.toggle("show", name === "playlists");
-    if (name) {
-      document.querySelector(name === "profile" ? "#profilePanel" : "#playlistPanel")
-        .scrollIntoView({behavior:"smooth",block:"nearest"});
+/* PLAYER TRACKING */
+function persistStats() {
+  write("bf_v2_stats", stats);
+}
+
+function savePosition() {
+  if (!current || !yt || !playerReady) return;
+
+  try {
+    const s = stat(current.id);
+    const state = yt.getPlayerState();
+
+    if (state === YT.PlayerState.PLAYING) {
+      const now = Date.now();
+      const elapsed = Math.max(
+        0,
+        Math.min(5,(now - current.lastTick)/1000)
+      );
+
+      s.seconds += elapsed;
+      current.lastTick = now;
+      s.lastSeen = now;
     }
-  }
 
-  function persistStats() {
-    write("bf_v2_stats", stats);
-  }
+    const position = yt.getCurrentTime();
+    const duration = yt.getDuration();
 
-  function savePosition() {
-    if (!current || !yt || !playerReady) return;
-    try {
-      const s = stat(current.id);
-      const state = yt.getPlayerState();
-      if (state === YT.PlayerState.PLAYING) {
-        const now = Date.now();
-        const elapsed = Math.max(0, Math.min(5, (now - current.lastTick) / 1000));
-        s.seconds += elapsed;
-        current.lastTick = now;
-      }
-      const position = yt.getCurrentTime();
-      const duration = yt.getDuration();
-      if (Number.isFinite(position)) s.lastPosition = position;
-      if (Number.isFinite(duration) && duration > 0) s.duration = duration;
+    if (Number.isFinite(position)) s.lastPosition = position;
+    if (Number.isFinite(duration) && duration > 0) s.duration = duration;
+
+    persistStats();
+  } catch {}
+}
+
+function stopTracking() {
+  if (trackTimer) clearInterval(trackTimer);
+  trackTimer = null;
+  savePosition();
+}
+
+function startTracking() {
+  if (trackTimer) clearInterval(trackTimer);
+  if (!current) return;
+
+  current.lastTick = Date.now();
+  trackTimer = setInterval(savePosition,3000);
+}
+
+function onPlayerState(event) {
+  if (!current) return;
+
+  const state = event.data;
+  const s = stat(current.id);
+
+  if (state === YT.PlayerState.PLAYING) {
+    if (!current.playCounted) {
+      s.plays++;
+      current.playCounted = true;
       persistStats();
+    }
+
+    startTracking();
+    $("#playerStatus").textContent = "Playing";
+  }
+
+  if (state === YT.PlayerState.PAUSED) {
+    stopTracking();
+    $("#playerStatus").textContent = "Paused";
+  }
+
+  if (state === YT.PlayerState.ENDED) {
+    stopTracking();
+    s.completed++;
+    s.lastPosition = 0;
+    persistStats();
+
+    $("#playerStatus").textContent = "Finished";
+    toast("Nice watch! Your feed is learning.");
+    render();
+  }
+
+  if (state === YT.PlayerState.BUFFERING) {
+    $("#playerStatus").textContent = "Buffering…";
+  }
+}
+
+function onPlayerError() {
+  stopTracking();
+  $("#playerStatus").textContent =
+    "This video cannot play in the embedded player.";
+  toast("This video cannot play here. Try another video.");
+}
+
+function loadYouTubeAPI() {
+  if (window.YT && window.YT.Player) {
+    createPlayer();
+    return;
+  }
+
+  if (document.querySelector('script[data-youtube-api]')) return;
+
+  const script = document.createElement("script");
+  script.src = "https://www.youtube.com/iframe_api";
+  script.dataset.youtubeApi = "true";
+
+  script.onerror = () => {
+    apiFailed = true;
+    toast("YouTube player could not load. Check your connection.");
+  };
+
+  document.head.appendChild(script);
+}
+
+function createPlayer() {
+  if (yt || !window.YT || !window.YT.Player) return;
+
+  yt = new YT.Player("ytPlayer", {
+    height:"100%",
+    width:"100%",
+    videoId:"",
+    playerVars:{
+      playsinline:1,
+      rel:0,
+      enablejsapi:1
+    },
+    events:{
+      onReady:() => {
+        playerReady = true;
+      },
+      onStateChange:onPlayerState,
+      onError:onPlayerError
+    }
+  });
+}
+
+window.onYouTubeIframeAPIReady = createPlayer;
+loadYouTubeAPI();
+
+function playVideo(id, restore = false) {
+  const v = videos.find(x => x.id === id);
+  if (!v) return;
+
+  if (current) {
+    const old = stat(current.id);
+
+    if (yt && playerReady) {
+      try {
+        if (
+          yt.getPlayerState() === YT.PlayerState.PLAYING &&
+          yt.getCurrentTime() < 8
+        ) {
+          old.skips++;
+        }
+      } catch {}
+    }
+
+    stopTracking();
+  }
+
+  current = {
+    id,
+    lastTick:Date.now(),
+    playCounted:false
+  };
+
+  stat(id).lastSeen = Date.now();
+
+  $("#playerTitle").textContent = v.title;
+  $("#playerDescription").textContent = v.description;
+  $("#player").classList.add("show");
+  $("#player").classList.remove("theater");
+  $("#theaterBtn").textContent = "Theater";
+  $("#playerSave").textContent = saved.has(id) ? "♥ Saved" : "♡ Save";
+  $("#playerStatus").textContent = "Loading player…";
+
+  $("#player").scrollIntoView({
+    behavior:"smooth",
+    block:"start"
+  });
+
+  const requestedId = id;
+  const startedAt = Date.now();
+
+  const begin = () => {
+    if (!current || current.id !== requestedId) return;
+
+    if (yt && playerReady) {
+      const position = restore ? stat(id).lastPosition : 0;
+
+      if (position > 5) {
+        yt.loadVideoById({
+          videoId:id,
+          startSeconds:position
+        });
+      } else {
+        yt.loadVideoById(id);
+      }
+
+      $("#playerStatus").textContent = "Loading video…";
+      return;
+    }
+
+    if (apiFailed || Date.now() - startedAt > 20000) {
+      $("#playerStatus").textContent =
+        "YouTube player did not load. Refresh and try again.";
+      return;
+    }
+
+    setTimeout(begin,250);
+  };
+
+  begin();
+  render();
+}
+
+function closePlayer() {
+  if (current && yt && playerReady) {
+    try {
+      if (
+        yt.getPlayerState() === YT.PlayerState.PLAYING &&
+        yt.getCurrentTime() < 8
+      ) {
+        stat(current.id).skips++;
+      }
     } catch {}
   }
 
-  function stopTracking() {
-    if (trackTimer) clearInterval(trackTimer);
-    trackTimer = null;
-    savePosition();
+  stopTracking();
+
+  if (yt && playerReady) {
+    try { yt.stopVideo(); } catch {}
   }
 
-  function startTracking() {
-    if (trackTimer) clearInterval(trackTimer);
-    if (!current) return;
-    current.lastTick = Date.now();
-    trackTimer = setInterval(savePosition, 3000);
-  }
+  current = null;
+  $("#player").classList.remove("show","theater");
+  persistStats();
+  renderContinue();
+}
 
-  function onPlayerState(event) {
-    if (!current) return;
-    const state = event.data;
-    if (state === YT.PlayerState.PLAYING) {
-      stat(current.id).plays++;
-      startTracking();
-      $("#playerStatus").textContent = "Playing";
-    } else if (state === YT.PlayerState.PAUSED) {
-      stopTracking();
-      $("#playerStatus").textContent = "Paused";
-    } else if (state === YT.PlayerState.ENDED) {
-      stopTracking();
-      stat(current.id).completed++;
-      stat(current.id).lastPosition = 0;
-      persistStats();
-      $("#playerStatus").textContent = "Finished";
-      toast("Nice watch! Your feed is learning.");
-      render();
-    } else if (state === YT.PlayerState.BUFFERING) {
-      $("#playerStatus").textContent = "Buffering…";
-    }
-  }
+function playAdjacent(direction) {
+  if (!current) return;
 
-  function onPlayerError() {
-    stopTracking();
-    $("#playerStatus").textContent = "This video cannot play in the embedded player.";
-    toast("This video cannot play here. Try another video.");
-  }
+  const list = currentList.length ? currentList : videos;
+  const index = list.findIndex(v => v.id === current.id);
 
-  function loadYouTubeAPI() {
-    if (window.YT && window.YT.Player) {
-      createPlayer();
-      return;
-    }
-    if (document.querySelector('script[data-youtube-api]')) return;
-    const script = document.createElement("script");
-    script.src = "https://www.youtube.com/iframe_api";
-    script.dataset.youtubeApi = "true";
-    script.onerror = () => toast("YouTube player could not load. Check your connection.");
-    document.head.appendChild(script);
-  }
+  if (index < 0) return;
 
-  function createPlayer() {
-    if (yt || !window.YT || !window.YT.Player) return;
-    yt = new YT.Player("ytPlayer", {
-      height:"100%",width:"100%",videoId:"",
-      playerVars:{playsinline:1,rel:0,enablejsapi:1},
-      events:{
-        onReady:() => {playerReady = true;},
-        onStateChange:onPlayerState,
-        onError:onPlayerError
-      }
-    });
-  }
+  const next = list[index + direction];
 
-  window.onYouTubeIframeAPIReady = createPlayer;
-  loadYouTubeAPI();
+  if (next) playVideo(next.id);
+  else toast("No more videos in this list.");
+}
 
-  function playVideo(id, restore = false) {
-    const v = videos.find(x => x.id === id);
-    if (!v) return;
+/* FEEDBACK */
+function giveFeedback(type) {
+  if (!current) return;
 
-    if (current) stopTracking();
-    current = {id,lastTick:Date.now()};
-    $("#playerTitle").textContent = v.title;
-    $("#playerDescription").textContent = v.description;
-    $("#player").classList.add("show");
-    $("#player").classList.remove("theater");
-    $("#theaterBtn").textContent = "Theater";
-    $("#playerSave").textContent = saved.has(id) ? "♥ Saved" : "♡ Save";
-    $("#playerStatus").textContent = "Loading player…";
-    $("#player").scrollIntoView({behavior:"smooth",block:"start"});
+  const s = stat(current.id);
+  s[type]++;
 
-    const begin = () => {
-      if (!current || current.id !== id) return;
-      if (yt && playerReady) {
-        const position = restore ? stat(id).lastPosition : 0;
-        if (position > 5) yt.loadVideoById({videoId:id,startSeconds:position});
-        else yt.loadVideoById(id);
-        $("#playerStatus").textContent = "Loading video…";
-      } else {
-        setTimeout(begin,250);
-      }
-    };
-    begin();
-    render();
-  }
+  persistStats();
+  render();
 
-  function closePlayer() {
-    stopTracking();
-    if (yt && playerReady) yt.stopVideo();
-    current = null;
-    $("#player").classList.remove("show","theater");
-  }
+  toast(
+    type === "likes"
+      ? "Added to your likes!"
+      : type === "dislikes"
+        ? "We'll reduce similar recommendations."
+        : "We'll show you fewer videos like this."
+  );
 
-  function playAdjacent(direction) {
-    if (!current) return;
-    const list = currentList.length ? currentList : videos;
-    const index = list.findIndex(v => v.id === current.id);
-    if (index < 0) return;
-    const next = list[index + direction];
-    if (next) playVideo(next.id);
-    else toast("No more videos in this list.");
-  }
+  if (type === "notInterested") closePlayer();
+}
 
-  function toggleSave(id) {
-    if (!validIds.has(id)) return;
-    if (saved.has(id)) {
-      saved.delete(id);
-      toast("Removed from saved videos");
-    } else {
-      saved.add(id);
-      toast("Saved for later");
-    }
-    write("bf_v2_saved", [...saved]);
-    render();
-    if (current && current.id === id) {
-      $("#playerSave").textContent = saved.has(id) ? "♥ Saved" : "♡ Save";
-    }
-  }
+/* SAVE VIDEOS */
+function toggleSave(id) {
+  if (!validIds.has(id)) return;
 
-  function openPlaylistModal(id) {
-    if (!playlists.length) {
-      toast("Create a playlist first.");
-      view = "playlists";
-      showPanel("playlists");
-      render();
-      return;
-    }
-    modalVideoId = id;
-    $("#playlistSelect").innerHTML = playlists.map(p =>
-      `<option value="${esc(p.id)}">${esc(p.name)}</option>`
-    ).join("");
-    $("#playlistModal").classList.add("show");
-  }
-
-  function closeModal() {
-    $("#playlistModal").classList.remove("show");
-    modalVideoId = null;
-  }
-
-  function addToPlaylist() {
-    const playlist = playlists.find(p => p.id === $("#playlistSelect").value);
-    if (!playlist || !modalVideoId) return;
-    if (!playlist.videos.includes(modalVideoId)) {
-      playlist.videos.push(modalVideoId);
-      write("bf_v2_playlists", playlists);
-      toast("Added to playlist");
-    } else toast("Already in this playlist");
-    closeModal();
-    render();
-  }
-
-  $("#grid").addEventListener("click", e => {
-    const save = e.target.closest("[data-save]");
-    if (save) {e.stopPropagation();toggleSave(save.dataset.save);return;}
-    const add = e.target.closest("[data-playlist]");
-    if (add) {e.stopPropagation();openPlaylistModal(add.dataset.playlist);return;}
-    const card = e.target.closest("[data-id]");
-    if (card) playVideo(card.dataset.id);
-  });
-
-  $("#grid").addEventListener("keydown", e => {
-    if ((e.key === "Enter" || e.key === " ") && e.target.matches(".card")) {
-      e.preventDefault();
-      playVideo(e.target.dataset.id);
-    }
-  });
-
-  $("#categories").addEventListener("click", e => {
-    const b = e.target.closest("[data-cat]");
-    if (b) {category = b.dataset.cat;render();}
-  });
-
-  $(".tabs").addEventListener("click", e => {
-    const b = e.target.closest("[data-view]");
-    if (!b) return;
-    view = b.dataset.view;
-    category = "All";
-    showPanel(view === "playlists" ? "playlists" : null);
-    render();
-  });
-
-  $("#search").addEventListener("input", render);
-  $("#theme").onclick = () => {
-    document.body.classList.toggle("dark");
-    write("bf_v2_dark", document.body.classList.contains("dark"));
-  };
-  if (read("bf_v2_dark", false)) document.body.classList.add("dark");
-
-  $("#profileBtn").onclick = () => {
-    showPanel($("#profilePanel").classList.contains("show") ? null : "profile");
-  };
-  document.querySelectorAll("[data-close]").forEach(b => {
-    b.onclick = () => showPanel(null);
-  });
-
-  $("#playlistForm").addEventListener("submit", e => {
-    e.preventDefault();
-    const name = $("#playlistName").value.trim();
-    if (!name) return;
-    if (playlists.some(p => p.name.toLowerCase() === name.toLowerCase())) {
-      toast("A playlist with that name already exists.");
-      return;
-    }
-    playlists.push({id:"pl_" + Date.now().toString(36),name,videos:[]});
-    write("bf_v2_playlists", playlists);
-    $("#playlistName").value = "";
-    render();
-    toast("Playlist created");
-  });
-
-  $("#playlistList").addEventListener("click", e => {
-    const open = e.target.closest("[data-open-playlist]");
-    const del = e.target.closest("[data-delete-playlist]");
-    if (del) {
-      playlists = playlists.filter(p => p.id !== del.dataset.deletePlaylist);
-      write("bf_v2_playlists", playlists);
-      render();
-      toast("Playlist deleted");
-      return;
-    }
-    if (open) {
-      const p = playlists.find(x => x.id === open.dataset.openPlaylist);
-      if (!p) return;
-      currentList = p.videos.map(id => videos.find(v => v.id === id)).filter(Boolean);
-      $("#grid").innerHTML = currentList.map(card).join("");
-      $("#count").textContent = currentList.length + " videos";
-      $("#heading").textContent = p.name;
-      $("#sectionSub").textContent = "Videos in this playlist.";
-      $("#empty").style.display = currentList.length ? "none" : "block";
-      $("#emptyTitle").textContent = "This playlist is empty.";
-      $("#emptyText").textContent = "Add videos using the plus button.";
-      $("#playlistPanel").classList.remove("show");
-    }
-  });
-
-  $("#modalCancel").onclick = closeModal;
-  $("#modalAdd").onclick = addToPlaylist;
-  $("#playlistModal").addEventListener("click", e => {
-    if (e.target === $("#playlistModal")) closeModal();
-  });
-
-  $("#playerSave").onclick = () => {if (current) toggleSave(current.id);};
-  $("#playerClose").onclick = closePlayer;
-  $("#back").onclick = closePlayer;
-  $("#nextBtn").onclick = () => playAdjacent(1);
-  $("#previousBtn").onclick = () => playAdjacent(-1);
-
-  $("#speed").onchange = () => {
-    if (yt && playerReady) {
-      yt.setPlaybackRate(Number($("#speed").value));
-      toast("Playback speed: " + $("#speed").value + "×");
-    }
-  };
-
-  $("#theaterBtn").onclick = () => {
-    const active = $("#player").classList.toggle("theater");
-    $("#theaterBtn").textContent = active ? "Exit theater" : "Theater";
-  };
-
-  $("#fullBtn").onclick = async () => {
-    const box = $("#playerBox");
-    try {
-      if (!document.fullscreenElement) await box.requestFullscreen();
-      else await document.exitFullscreen();
-    } catch {toast("Fullscreen is not supported here.");}
-  };
-
-  $("#resetStats").onclick = () => {
-    if (!confirm("Reset your watch history and recommendation data? Saved videos and playlists will stay.")) return;
-    stats = {};
-    write("bf_v2_stats", stats);
-    render();
-    toast("Watch history reset");
-  };
-
-  document.addEventListener("visibilitychange", () => {
-    if (document.hidden) stopTracking();
-    else if (current && yt && playerReady && yt.getPlayerState() === YT.PlayerState.PLAYING) startTracking();
-  });
-
-  window.addEventListener("pagehide", () => {
-    stopTracking();
-    write("bf_v2_saved", [...saved]);
-    write("bf_v2_playlists", playlists);
-  });
-
-  document.addEventListener("keydown", e => {
-    const tag = document.activeElement?.tagName;
-    if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT") return;
-    if (e.key === "Escape") {
-      closeModal();
-      return;
-    }
-    if (!current || !yt || !playerReady) return;
-    if (e.key === " " || e.key.toLowerCase() === "k") {
-      e.preventDefault();
-      const state = yt.getPlayerState();
-      if (state === YT.PlayerState.PLAYING) yt.pauseVideo();
-      else yt.playVideo();
-    }
-    if (e.key.toLowerCase() === "j") yt.seekTo(Math.max(0,yt.getCurrentTime()-10),true);
-    if (e.key.toLowerCase() === "l") yt.seekTo(yt.getCurrentTime()+10,true);
-    if (e.key === "ArrowRight") yt.seekTo(yt.getCurrentTime()+5,true);
-    if (e.key === "ArrowLeft") yt.seekTo(Math.max(0,yt.getCurrentTime()-5),true);
-  });
-
-  if (!videos.length) {
-    $("#empty").style.display = "block";
-    $("#emptyTitle").textContent = "Your video library is empty.";
-    $("#emptyText").textContent = "Check that videos.js is loaded and contains window.BEST_FEED_VIDEOS.";
-    $("#count").textContent = "0 videos";
+  if (saved.has(id)) {
+    saved.delete(id);
+    toast("Removed from saved videos");
   } else {
+    saved.add(id);
+    toast("Saved for later");
+  }
+
+  write("bf_v2_saved",[...saved]);
+  render();
+
+  if (current && current.id === id) {
+    $("#playerSave").textContent =
+      saved.has(id) ? "♥ Saved" : "♡ Save";
+  }
+}
+
+/* PLAYLISTS */
+function openPlaylistModal(id) {
+  if (!playlists.length) {
+    toast("Create a playlist first.");
+    view = "playlists";
+    activePlaylistId = null;
+    showPanel("playlists");
+    render();
+    return;
+  }
+
+  modalVideoId = id;
+
+  $("#playlistSelect").innerHTML = playlists.map(p => `
+    <option value="${esc(p.id)}">${esc(p.name)}</option>
+  `).join("");
+
+  $("#playlistModal").classList.add("show");
+}
+
+function closeModal() {
+  $("#playlistModal").classList.remove("show");
+  modalVideoId = null;
+}
+
+function addToPlaylist() {
+  const playlist = playlists.find(
+    p => p.id === $("#playlistSelect").value
+  );
+
+  if (!playlist || !modalVideoId) return;
+
+  if (!playlist.videos.includes(modalVideoId)) {
+    playlist.videos.push(modalVideoId);
+    write("bf_v2_playlists",playlists);
+    toast("Added to playlist");
+  } else {
+    toast("Already in this playlist");
+  }
+
+  closeModal();
+  render();
+}
+
+/* GRID EVENTS */
+$("#grid").addEventListener("click", e => {
+  const saveButton = e.target.closest("[data-save]");
+
+  if (saveButton) {
+    e.stopPropagation();
+    toggleSave(saveButton.dataset.save);
+    return;
+  }
+
+  const addButton = e.target.closest("[data-playlist]");
+
+  if (addButton) {
+    e.stopPropagation();
+    openPlaylistModal(addButton.dataset.playlist);
+    return;
+  }
+
+  const videoCard = e.target.closest("[data-id]");
+
+  if (videoCard) {
+    playVideo(videoCard.dataset.id);
+  }
+});
+
+$("#grid").addEventListener("keydown", e => {
+  if (
+    (e.key === "Enter" || e.key === " ") &&
+    e.target.matches(".card")
+  ) {
+    e.preventDefault();
+    playVideo(e.target.dataset.id);
+  }
+});
+
+$("#continueGrid").addEventListener("click", e => {
+  const card = e.target.closest("[data-continue]");
+  if (card) playVideo(card.dataset.continue,true);
+});
+
+$("#categories").addEventListener("click", e => {
+  const button = e.target.closest("[data-cat]");
+
+  if (button) {
+    category = button.dataset.cat;
+    activePlaylistId = null;
     render();
   }
+});
+
+$(".tabs").addEventListener("click", e => {
+  const button = e.target.closest("[data-view]");
+  if (!button) return;
+
+  if (button.dataset.view === "shorts") return;
+
+  view = button.dataset.view;
+  category = "All";
+  activePlaylistId = null;
+
+  showPanel(view === "playlists" ? "playlists" : null);
+  render();
+});
+
+/* SEARCH */
+let searchSaveTimer;
+
+$("#search").addEventListener("input", () => {
+  activePlaylistId = null;
+  render();
+
+  clearTimeout(searchSaveTimer);
+
+  searchSaveTimer = setTimeout(() => {
+    const q = $("#search").value.trim().toLowerCase();
+
+    if (q.length < 2) return;
+
+    searches[q] = Math.min((searches[q] || 0) + 1,30);
+    write("bf_v2_searches",searches);
+  },700);
+});
+
+/* THEME */
+$("#theme").onclick = () => {
+  document.body.classList.toggle("dark");
+  write("bf_v2_dark",document.body.classList.contains("dark"));
+};
+
+if (read("bf_v2_dark",false)) {
+  document.body.classList.add("dark");
+}
+
+/* PROFILE */
+$("#profileBtn").onclick = () => {
+  showPanel(
+    $("#profilePanel").classList.contains("show")
+      ? null
+      : "profile"
+  );
+};
+
+document.querySelectorAll("[data-close]").forEach(button => {
+  button.onclick = () => showPanel(null);
+});
+
+/* PLAYLIST FORM */
+$("#playlistForm").addEventListener("submit",e => {
+  e.preventDefault();
+
+  const name = $("#playlistName").value.trim();
+  if (!name) return;
+
+  if (playlists.some(
+    p => p.name.toLowerCase() === name.toLowerCase()
+  )) {
+    toast("A playlist with that name already exists.");
+    return;
+  }
+
+  playlists.push({
+    id:"pl_" + Date.now().toString(36),
+    name,
+    videos:[]
+  });
+
+  write("bf_v2_playlists",playlists);
+  $("#playlistName").value = "";
+  render();
+  toast("Playlist created");
+});
+
+$("#playlistList").addEventListener("click",e => {
+  const open = e.target.closest("[data-open-playlist]");
+  const del = e.target.closest("[data-delete-playlist]");
+
+  if (del) {
+    playlists = playlists.filter(
+      p => p.id !== del.dataset.deletePlaylist
+    );
+
+    if (activePlaylistId === del.dataset.deletePlaylist) {
+      activePlaylistId = null;
+    }
+
+    write("bf_v2_playlists",playlists);
+    render();
+    toast("Playlist deleted");
+    return;
+  }
+
+  if (open) {
+    const p = playlists.find(
+      x => x.id === open.dataset.openPlaylist
+    );
+
+    if (!p) return;
+
+    activePlaylistId = p.id;
+    view = "playlists";
+    category = "All";
+    $("#playlistPanel").classList.remove("show");
+    render();
+  }
+});
+
+/* MODAL */
+$("#modalCancel").onclick = closeModal;
+$("#modalAdd").onclick = addToPlaylist;
+
+$("#playlistModal").addEventListener("click",e => {
+  if (e.target === $("#playlistModal")) closeModal();
+});
+
+/* PLAYER BUTTONS */
+$("#playerSave").onclick = () => {
+  if (current) toggleSave(current.id);
+};
+
+$("#playerLike").onclick = () => giveFeedback("likes");
+$("#playerDislike").onclick = () => giveFeedback("dislikes");
+$("#playerNotInterested").onclick = () => giveFeedback("notInterested");
+
+$("#playerClose").onclick = closePlayer;
+$("#back").onclick = closePlayer;
+$("#nextBtn").onclick = () => playAdjacent(1);
+$("#previousBtn").onclick = () => playAdjacent(-1);
+
+$("#speed").onchange = () => {
+  if (yt && playerReady) {
+    yt.setPlaybackRate(Number($("#speed").value));
+    toast("Playback speed: " + $("#speed").value + "×");
+  }
+};
+
+$("#theaterBtn").onclick = () => {
+  const active = $("#player").classList.toggle("theater");
+  $("#theaterBtn").textContent =
+    active ? "Exit theater" : "Theater";
+};
+
+$("#fullBtn").onclick = async () => {
+  const box = $("#playerBox");
+
+  try {
+    if (!document.fullscreenElement) {
+      await box.requestFullscreen();
+    } else {
+      await document.exitFullscreen();
+    }
+  } catch {
+    toast("Fullscreen is not supported here.");
+  }
+};
+
+/* RESET */
+$("#resetStats").onclick = () => {
+  if (!confirm(
+    "Reset your watch history and recommendation data? Saved videos and playlists will stay."
+  )) return;
+
+  stats = {};
+  searches = {};
+
+  write("bf_v2_stats",stats);
+  write("bf_v2_searches",searches);
+
+  render();
+  toast("Watch history reset");
+};
+
+/* PAGE VISIBILITY */
+document.addEventListener("visibilitychange",() => {
+  if (document.hidden) {
+    stopTracking();
+  } else if (
+    current &&
+    yt &&
+    playerReady &&
+    yt.getPlayerState() === YT.PlayerState.PLAYING
+  ) {
+    startTracking();
+  }
+});
+
+window.addEventListener("pagehide",() => {
+  stopTracking();
+  write("bf_v2_saved",[...saved]);
+  write("bf_v2_playlists",playlists);
+  persistStats();
+});
+
+/* KEYBOARD */
+document.addEventListener("keydown",e => {
+  const tag = document.activeElement?.tagName;
+
+  if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT") {
+    return;
+  }
+
+  if (e.key === "Escape") {
+    closeModal();
+    return;
+  }
+
+  if (!current || !yt || !playerReady) return;
+
+  if (e.key === " " || e.key.toLowerCase() === "k") {
+    e.preventDefault();
+
+    const state = yt.getPlayerState();
+
+    if (state === YT.PlayerState.PLAYING) {
+      yt.pauseVideo();
+    } else {
+      yt.playVideo();
+    }
+  }
+
+  if (e.key.toLowerCase() === "j") {
+    yt.seekTo(Math.max(0,yt.getCurrentTime()-10),true);
+  }
+
+  if (e.key.toLowerCase() === "l") {
+    yt.seekTo(yt.getCurrentTime()+10,true);
+  }
+
+  if (e.key === "ArrowRight") {
+    yt.seekTo(yt.getCurrentTime()+5,true);
+  }
+
+  if (e.key === "ArrowLeft") {
+    yt.seekTo(Math.max(0,yt.getCurrentTime()-5),true);
+  }
+});
+
+/* START */
+if (!videos.length) {
+  $("#empty").style.display = "block";
+  $("#emptyTitle").textContent = "Your video library is empty.";
+  $("#emptyText").textContent =
+    "Check that videos.js is loaded and contains window.BEST_FEED_VIDEOS.";
+  $("#count").textContent = "0 videos";
+} else {
+  render();
+}
+
 })();
 </script>
+
+<!-- SHORTS PLAYER ENGINE -->
+<script src="shorts-engine.js"></script>
+
 </body>
 </html>
