@@ -54,25 +54,10 @@ window.BEST_FEED_VIDEOS = [
   { url:"https://www.youtube.com/watch?v=T9xsTO6ujqM", title:"Unusual Ball Experiment", creator:"Mark Rober", category:"Experiments", description:"An unusual experiment with a ball." },
   { url:"https://www.youtube.com/watch?v=edRloa1ZHqY", title:"Water Balloon Experiment", creator:"Mark Rober", category:"Experiments", description:"A water balloon and trampoline experiment." },
   { url:"https://www.youtube.com/watch?v=Twn_4AW0M6U", title:"Creative Robot Inventions", creator:"Mark Rober", category:"Experiments", description:"Creative inventions and robot ideas." },
-
-  // GAMING & ANIMATION
+    // GAMING & ANIMATION
   { url:"https://www.youtube.com/watch?v=iWTs1BWCqrE", title:"The Duel", creator:"Dream", category:"Gaming", description:"A Minecraft video made in memory of Technoblade." },
-  { url:"https://www.youtube.com/watch?v=lhikdD6Hf2M", title:"Animation Meets YouTube", creator:"Alan Becker", category:"Animation", description:"An animated internet adventure." }
-    // NEW VIRAL & TRENDING PICKS
+  { url:"https://www.youtube.com/watch?v=lhikdD6Hf2M", title:"Animation Meets YouTube", creator:"Alan Becker", category:"Animation", description:"An animated internet adventure." },
 
-  { url:"https://www.youtube.com/watch?v=bHxLy6Qza3M", title:"10,000 Player Minecraft War", creator:"Parrot", category:"Gaming", description:"A massive Minecraft war with thousands of players." },
-
-  { url:"https://www.youtube.com/results?search_query=MrBeast+Trap+Door+Roulette", title:"Trap Door Roulette", creator:"MrBeast", category:"Entertainment", description:"A viral MrBeast challenge.", featured:true },
-
-  { url:"https://www.youtube.com/results?search_query=MrBeast+Can+A+Robot+Do+My+Chores", title:"Can A Robot Do My Chores?", creator:"MrBeast", category:"Technology", description:"MrBeast explores a robot challenge.", featured:true },
-
-  { url:"https://www.youtube.com/results?search_query=Dune+Part+Three+Final+Trailer+2026", title:"Dune Part Three Trailer", creator:"Warner Bros.", category:"Movies", description:"Sci-fi movie trailer." },
-
-  { url:"https://www.youtube.com/results?search_query=Avengers+Doomsday+Official+Trailer", title:"Avengers Doomsday", creator:"Marvel", category:"Movies", description:"Marvel superhero movie content." },
-
-  { url:"https://www.youtube.com/results?search_query=The+Weeknd+Hong+Kong+Official+Music+Video", title:"Hong Kong", creator:"The Weeknd", category:"Music", description:"The Weeknd music search." },
-
-  { url:"https://www.youtube.com/results?search_query=Brawl+Stars+Gus+Origin+Story", title:"Gus Origin Story", creator:"Brawl Stars", category:"Animation", description:"Brawl Stars animated story." },
-
-  { url:"https://www.youtube.com/results?search_query=GTA+VI+Features+Trailer", title:"GTA VI Features Trailer", creator:"PlayStation", category:"Gaming", description:"Grand Theft Auto VI trailer." }
+  // NEW VIDEO PICKS
+  { url:"https://www.youtube.com/watch?v=bHxLy6Qza3M", title:"10,000 Player Minecraft War", creator:"Parrot", category:"Gaming", description:"A massive Minecraft war with thousands of players." }
 ];
