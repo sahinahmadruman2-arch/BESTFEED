@@ -1,71 +1,113 @@
 
-// BEST FEED — GLOBAL SHORTS LIBRARY
-// Trend-inspired picks based on worldwide Shorts charts.
-// Keep the same fields as videos.js.
+/* BEST FEED — 100 MIXED SHORTS
+   Roblox + Animations + Minecraft + Gaming
+   Comedy + Animals + Food + DIY + Facts + Music
+*/
 
 window.BEST_FEED_SHORTS = [
-  {
-    url: "https://www.youtube.com/shorts/kPI9Mc35mOg",
-    title: "Trap Door Roulette",
-    creator: "MrBeast",
-    category: "Entertainment",
-    description: "A fast-paced MrBeast Short.",
-    featured: true
-  },
-  {
-    url: "https://www.youtube.com/shorts/llSOvSdU2a8",
-    title: "I NEED ONE MORE SUBSCRIBER!!",
-    creator: "Mark Rober",
-    category: "Entertainment",
-    description: "A popular subscriber-themed Short.",
-    featured: true
-  },
-  {
-    url: "https://www.youtube.com/shorts/gVxDrYtYhdo",
-    title: "THAT'S NOT MY MOM! — Roblox Animation",
-    creator: "GH'S",
-    category: "Roblox",
-    description: "Roblox animation with a funny twist.",
-    featured: true
-  },
-  {
-    url: "https://www.youtube.com/shorts/-pgYcrC649Y",
-    title: "ROBLOX TONIGHT! — 99 Nights in the Forest",
-    creator: "GH'S",
-    category: "Roblox",
-    description: "Roblox-themed animated Short.",
-    featured: true
-  },
-  {
-    url: "https://www.youtube.com/shorts/mFWpUx3FiyU",
-    title: "Guess The Animal",
-    creator: "MrBeast",
-    category: "Entertainment",
-    description: "An animal guessing Short.",
-    featured: true
-  },
-  {
-    url: "https://www.youtube.com/shorts/_JUlWtSCNbs",
-    title: "Who's The Strongest Streamer?",
-    creator: "MrBeast",
-    category: "Gaming",
-    description: "A creator and gaming-themed Short.",
-    featured: true
-  },
-  {
-    url: "https://www.youtube.com/shorts/lHNT7NlavYE",
-    title: "Make the Color Challenge",
-    creator: "Peachybbies",
-    category: "Satisfying",
-    description: "Colorful and satisfying content.",
-    featured: false
-  },
-  {
-    url: "https://www.youtube.com/shorts/anaZZ8MJ3k8",
-    title: "Aaj Mangalwar Hai",
-    creator: "ZappyToons",
-    category: "Animation",
-    description: "Hindi animated entertainment.",
-    featured: false
-  }
+  // ROBLOX ANIMATIONS
+  {title:"In This World Everyone Can See Your Lies",creator:"ItsGuestCap",category:"Roblox Animation",description:"Roblox story animation",url:"https://www.youtube.com/shorts/tCxbrBltKHI"},
+  {title:"Pencils and Erasers",creator:"ItsGuestCap",category:"Roblox Animation",description:"Funny Roblox story",url:"https://www.youtube.com/shorts/mb1fl3t1vCI"},
+  {title:"DONT Let Go",creator:"ItsGuestCap",category:"Roblox Animation",description:"Suspenseful animation",url:"https://www.youtube.com/shorts/jwBFSJ8jcmY"},
+  {title:"Never Open Your Mouth In This Town",creator:"ItsGuestCap",category:"Roblox Animation",description:"Roblox story",url:"https://www.youtube.com/shorts/PHJTWhxsvQc"},
+  {title:"Touching The Ground Is Forbidden",creator:"ItsGuestCap",category:"Roblox Animation",description:"Roblox challenge story",url:"https://www.youtube.com/shorts/BVzb_90WD5A"},
+  {title:"Everyone Can Replay Memories",creator:"ItsGuestCap",category:"Roblox Animation",description:"Animated story",url:"https://www.youtube.com/shorts/fp-F6vhgwOc"},
+  {title:"She Lost Her Magical Curly Hair",creator:"Anim8",category:"Roblox Animation",description:"Magical Roblox animation",url:"https://www.youtube.com/shorts/h6ewCmN2gMw"},
+  {title:"The Wooden Father's Ultimate Sacrifice",creator:"Anim8",category:"Roblox Animation",description:"Emotional story",url:"https://www.youtube.com/shorts/jtQZQsIi8ds"},
+  {title:"Her Hair Became Her Last Yarn",creator:"Anim8",category:"Roblox Animation",description:"Creative animation",url:"https://www.youtube.com/shorts/HWILRe1tl9k"},
+  {title:"The Boy Who Ate Everything",creator:"Anim8",category:"Roblox Animation",description:"Funny animation",url:"https://www.youtube.com/shorts/4pKPoeIDfJ4"},
+  {title:"His Heart Revealed His Secret Crush",creator:"Anim8",category:"Roblox Animation",description:"Roblox animated story",url:"https://www.youtube.com/shorts/kLuP-MJZQfM"},
+  {title:"Rock Paper Scissors Became Best Friends",creator:"Anim8",category:"Roblox Animation",description:"Friendship animation",url:"https://www.youtube.com/shorts/s8tYrre2GJs"},
+  {title:"The Little Bird Conquered His Fear",creator:"Anim8",category:"Roblox Animation",description:"Animated adventure",url:"https://www.youtube.com/shorts/bSrRUzauE3o"},
+  {title:"Viewfinder in Roblox MM2",creator:"minebloxz7",category:"Roblox Gaming",description:"MM2 gameplay edit",url:"https://www.youtube.com/shorts/KaCnkwqaP1w"},
+  {title:"The Mimic — The Hollow Event",creator:"minebloxz7",category:"Roblox Horror",description:"Roblox horror gameplay",url:"https://www.youtube.com/shorts/1V5tEhx4gPg"},
+  {title:"Hardest Obby in Roblox",creator:"minebloxz7",category:"Roblox Gaming",description:"Difficult obby gameplay",url:"https://www.youtube.com/shorts/Ceroxuwz8yk"},
+  {title:"When Siblings Blame Each Other",creator:"Mashles",category:"Roblox Animation",description:"Funny sibling animation",url:"https://www.youtube.com/shorts/rQYeNaUZOgY"},
+
+  // ROBLOX AND GAMING
+  {title:"Why Did We All Do This?",creator:"GH'S",category:"Roblox Animation",description:"Roblox animation",url:"https://www.youtube.com/shorts/nhTJFU_Wuf0"},
+  {title:"Roblox Animation Top 30",creator:"GH'S",category:"Roblox Animation",description:"Roblox animation compilation",url:"https://www.youtube.com/shorts/sW7_ajyOqYM"},
+  {title:"My Dad Is An NPC",creator:"playit",category:"Roblox Gaming",description:"NPC comedy",url:"https://www.youtube.com/shorts/8cFrcSOPSRM"},
+  {title:"The Flower That Saved the Garden",creator:"Segredos Animados",category:"Roblox Animation",description:"Animated story",url:"https://www.youtube.com/shorts/rI1d61h-1xg"},
+  {title:"Y/N and CEO Be Like",creator:"Lowkmira",category:"Roblox Comedy",description:"Roblox roleplay meme",url:"https://www.youtube.com/shorts/nZSu5XE1SqU"},
+  {title:"Roblox Advent Calendar",creator:"Lana's Life",category:"Roblox Gaming",description:"Roblox seasonal video",url:"https://www.youtube.com/shorts/hNlGqRxz48A"},
+  {title:"Building a House in Steal an Egg",creator:"Bsm",category:"Roblox Gaming",description:"Roblox gameplay",url:"https://www.youtube.com/shorts/THeykB2KJg4"},
+  {title:"Minecraft Brothers Story",creator:"IORI GAME ROOM",category:"Minecraft Animation",description:"Minecraft family story",url:"https://www.youtube.com/shorts/IwEyJFxsBbk"},
+  {title:"Minecraft Character Challenge",creator:"Gaming Creator",category:"Minecraft",description:"Minecraft character challenge",url:"https://www.youtube.com/shorts/o-X3FyT2IBY"},
+  {title:"Minecraft Family Animation",creator:"Gaming Creator",category:"Minecraft Animation",description:"Minecraft animated story",url:"https://www.youtube.com/shorts/CRALrR_lKBE"},
+  {title:"Minecraft Miniature Adventure",creator:"Sculky",category:"Minecraft",description:"Minecraft mini world",url:"https://www.youtube.com/shorts/d8ZzCEflwCA"},
+  {title:"Realistic Minecraft Bridge",creator:"ViksQ",category:"Minecraft Build",description:"Creative Minecraft build",url:"https://www.youtube.com/shorts/QkycklxUJyA"},
+  {title:"LEGO Twixxel Build",creator:"Fusion Bricks",category:"LEGO",description:"LEGO building short",url:"https://www.youtube.com/shorts/C8o0jJG5gSQ"},
+
+  // VIRAL CHALLENGES AND ENTERTAINMENT
+  {title:"Can A Robot Do My Chores?",creator:"MrBeast",category:"Technology",description:"Robot challenge",url:"https://www.youtube.com/shorts/41UzbuW6wJs"},
+  {title:"Comment DINO If You Want One",creator:"Dino Says",category:"Funny",description:"Dinosaur-themed fun",url:"https://www.youtube.com/shorts/DZtnSFo3DfI"},
+  {title:"Sisters 20 Years Later",creator:"Nancy Wu",category:"Comedy",description:"Family comedy",url:"https://www.youtube.com/shorts/PmWaWDRYfho"},
+  {title:"Learn Vehicles for Kids",creator:"Kunooz Al Baraem",category:"Animation",description:"Vehicles learning cartoon",url:"https://www.youtube.com/shorts/mgJOn-S2wjo"},
+  {title:"Giant Rainbow Family Art",creator:"Little Family Moments",category:"Family",description:"Family art time",url:"https://www.youtube.com/shorts/11Sfc-zkHW8"},
+  {title:"My New Home",creator:"VibeWithCHANDNI",category:"Lifestyle",description:"Home lifestyle",url:"https://www.youtube.com/shorts/46X-cfNZXX0"},
+  {title:"Recycling Used Batteries",creator:"VocaVoca",category:"Education",description:"Recycling education",url:"https://www.youtube.com/shorts/SOJiq-XSVdM"},
+  {title:"Which Potato Chips Will Save Me?",creator:"BRN Arabic",category:"Comedy",description:"Food comedy",url:"https://www.youtube.com/shorts/xYAfKOHDiQI"},
+  {title:"Doctor Soldier and Firefighter",creator:"AbangAdik",category:"Animation",description:"Jobs animation",url:"https://www.youtube.com/shorts/mRSXlegJUZo"},
+  {title:"Why Perfect Railroads Don't Work",creator:"Ricks Clips",category:"Engineering",description:"Engineering facts",url:"https://www.youtube.com/shorts/7xS87iActkU"},
+  {title:"Arabic Family Song",creator:"Iنتعلم ونغني",category:"Music",description:"Family music animation",url:"https://www.youtube.com/shorts/0_JuysNIRT0"},
+  {title:"Our Little Circle",creator:"Mokomaru Family",category:"Family",description:"Family and pets",url:"https://www.youtube.com/shorts/8p7_Xky8vdQ"},
+  {title:"Travel Style Shots at Home",creator:"LucaaaFilms",category:"Creative",description:"Creative camera shots",url:"https://www.youtube.com/shorts/VP_dY8zWXvE"},
+  {title:"Funny Fish Camera Moment",creator:"Abu Alyous",category:"Comedy",description:"Funny fish moment",url:"https://www.youtube.com/shorts/kwanY6c06r8"},
+  {title:"The Art of Tap Ins",creator:"JDBFOOTBALL",category:"Football",description:"Football skills",url:"https://www.youtube.com/shorts/y44dkoHGVA8"},
+  {title:"What If Humans Had Hummingbird Hearts?",creator:"Zack D. Films",category:"Facts",description:"Science facts",url:"https://www.youtube.com/shorts/ob4_mDwWkM0"},
+  {title:"From Saree to Bridal Look",creator:"Shreya Siddharth Arora",category:"Lifestyle",description:"Bridal transformation",url:"https://www.youtube.com/shorts/eFY6s55eijg"},
+  {title:"MasterChef Potatoes",creator:"Nick DiGiovanni",category:"Food",description:"Creative food video",url:"https://www.youtube.com/shorts/HE_rKC9B6BY"},
+  {title:"Bathroom Concert Surprise",creator:"Fay Teman Virtual",category:"Comedy",description:"Funny music moment",url:"https://www.youtube.com/shorts/fJozV9WxATE"},
+  {title:"Who Lives in the Bug House?",creator:"Bodi",category:"Education",description:"Insect learning",url:"https://www.youtube.com/shorts/NeMmwJDg6fI"},
+  {title:"DIY Christmas Tree Decoration",creator:"Daily Original Vids",category:"DIY",description:"Creative decoration",url:"https://www.youtube.com/shorts/PA8y5uir3gg"},
+  {title:"How Big Is One Million Subscribers?",creator:"MrBeast Gaming",category:"Gaming",description:"Creator milestone",url:"https://www.youtube.com/shorts/eftBjQ94ju4"},
+  {title:"Kind Rescuers Save a Deer",creator:"Sassy",category:"Animals",description:"Animal rescue story",url:"https://www.youtube.com/shorts/9jstOypWrkE"},
+  {title:"A Thousand Layer Potato",creator:"Bisongainz",category:"Food",description:"Layered food creation",url:"https://www.youtube.com/shorts/a7Clgter3Ug"},
+  {title:"Colorful Cartoon Adventure",creator:"Deadboy",category:"Animation",description:"Colorful cartoon",url:"https://www.youtube.com/shorts/NVq59V96zX8"},
+  {title:"Learn to Use the Slide Safely",creator:"Lagu Kita",category:"Education",description:"Playground safety cartoon",url:"https://www.youtube.com/shorts/XUH7CFT_QVU"},
+
+  // MORE GAMING, FACTS, ANIMALS AND ENTERTAINMENT
+  {title:"Why Dobermans Have Cropped Ears",creator:"Zack D. Films",category:"Animal Facts",description:"Animal facts explainer",url:"https://www.youtube.com/shorts/gyOZv_ckZQU"},
+  {title:"The Reason Humpty Dumpty Fell",creator:"Zack D. Films",category:"Facts",description:"Story explainer",url:"https://www.youtube.com/shorts/uBUMTlXdS2I"},
+  {title:"How to Build a Matchbox Camera",creator:"Zack D. Films",category:"DIY",description:"Tiny camera craft",url:"https://www.youtube.com/shorts/BmVz7QMOg3c"},
+  {title:"How Horseflies Bite",creator:"Zack D. Films",category:"Animal Facts",description:"Insect facts",url:"https://www.youtube.com/shorts/6mRR91AbxjQ"},
+  {title:"The Perfect Christmas Gift",creator:"DriveSync",category:"Cars",description:"Car-themed short",url:"https://www.youtube.com/shorts/2xD84ViC0BQ"},
+  {title:"Pink and Gold Bowling Balls",creator:"Bounce Theory",category:"Satisfying",description:"Satisfying bowling visual",url:"https://www.youtube.com/shorts/uFcHjMDes1g"},
+  {title:"The Ground",creator:"GreenBroRants",category:"Nature",description:"Nature clip",url:"https://www.youtube.com/shorts/SuMUaaGDYGI"},
+  {title:"GTA 6 Locked to 30 FPS",creator:"Jacobweeby",category:"Gaming",description:"Gaming reaction",url:"https://www.youtube.com/shorts/pjUqO8buTIM"},
+  {title:"Gamer Ships",creator:"Gneef",category:"Gaming",description:"Gaming short",url:"https://www.youtube.com/shorts/gUE2bapGQUs"},
+  {title:"Epic Pirate Token",creator:"CarterPCs",category:"Gaming",description:"Gaming item discussion",url:"https://www.youtube.com/shorts/VS_vQcOLyfs"},
+  {title:"Stacky Ice Cream Runner",creator:"MOCOF YT",category:"Gaming",description:"Colorful runner game",url:"https://www.youtube.com/shorts/ki1X5IpeEmg"},
+  {title:"Gana el Segundo",creator:"Chuy Mine",category:"Gaming",description:"Quick gaming challenge",url:"https://www.youtube.com/shorts/8sLejLmqAo8"},
+  {title:"GTA 6 Locked at 30 FPS",creator:"TheAnimeMen",category:"Gaming Comedy",description:"Gaming reaction",url:"https://www.youtube.com/shorts/0MO0RfOMt6Q"},
+  {title:"What Your Cat Thinks You Do",creator:"JoRa",category:"Animals Comedy",description:"Funny cat short",url:"https://www.youtube.com/shorts/Rw254r7w5N4"},
+  {title:"Funny Gaming Compilation",creator:"Xx Skull Mug xX",category:"Gaming Comedy",description:"Gaming memes",url:"https://www.youtube.com/shorts/GPQNfJfrU7w"},
+  {title:"Admin the Sound",creator:"Hiqly",category:"Minecraft",description:"Minecraft sound clip",url:"https://www.youtube.com/shorts/zsxoRt6FLK4"},
+  {title:"This Isn't Fortnite",creator:"Preston Anderson",category:"Gaming Comedy",description:"Gaming joke",url:"https://www.youtube.com/shorts/WFuAa8UyA2s"},
+  {title:"Sheru Bhai vs Voice Gaming",creator:"Voice",category:"Gaming",description:"Gaming matchup",url:"https://www.youtube.com/shorts/w-h1j1l7bio"},
+  {title:"The Candy House",creator:"Drip Dyl",category:"Satisfying",description:"Candy-themed visual",url:"https://www.youtube.com/shorts/RDw_lPknBcM"},
+  {title:"Roller Coaster Name Game",creator:"Mihtanino",category:"Comedy",description:"Roller coaster comedy",url:"https://www.youtube.com/shorts/Ff0PY2z-rPs"},
+  {title:"Ogro Gaming Meme",creator:"Kyrie",category:"Gaming Comedy",description:"Gaming meme",url:"https://www.youtube.com/shorts/fI3AgSnr16s"},
+  {title:"This Melon Has Lost Its Mind",creator:"Red Gamer",category:"Gaming Comedy",description:"Funny gaming short",url:"https://www.youtube.com/shorts/A80zLiUMfyg"},
+  {title:"Password Lagake Bhul Gaya",creator:"Hum Anokhe Hai",category:"Comedy",description:"Relatable password joke",url:"https://www.youtube.com/shorts/J5rL8rAorQk"},
+  {title:"Minecraft Circle Challenge",creator:"LouisAyy",category:"Minecraft",description:"Minecraft challenge",url:"https://www.youtube.com/shorts/q7Pi5Efn_BU"},
+  {title:"LEGO Minecraft: Who Can Sit?",creator:"Top Creative World",category:"LEGO",description:"LEGO Minecraft animation",url:"https://www.youtube.com/shorts/0JBrE6kvHvw"},
+  {title:"My Familia",creator:"Animation Creator",category:"Animation",description:"Family animation",url:"https://www.youtube.com/shorts/XVAv6a24hnI"},
+  {title:"Samsung Galaxy vs iPhone",creator:"Mr Areyan",category:"Technology",description:"Phone comparison",url:"https://www.youtube.com/shorts/XKLiZUsqNKg"},
+  {title:"Family Comedy Moment",creator:"Comedy Creator",category:"Comedy",description:"Family-friendly comedy",url:"https://www.youtube.com/shorts/wqHXAD9K2kU"},
+  {title:"School Life Comedy",creator:"Comedy Creator",category:"Comedy",description:"School-life joke",url:"https://www.youtube.com/shorts/rECf9x40cUk"},
+  {title:"Couple Comedy Moment",creator:"Comedy Creator",category:"Comedy",description:"Funny couple moment",url:"https://www.youtube.com/shorts/fIwIS1NYkmM"},
+  {title:"I Got Married",creator:"LouisAyy",category:"Comedy",description:"Marriage meme",url:"https://www.youtube.com/shorts/1DjvgJHMNhg"},
+  {title:"Unexpected Funny Moment",creator:"Comedy Creator",category:"Comedy",description:"Unexpected funny moment",url:"https://www.youtube.com/shorts/RJ0qBLc1od4"},
+  {title:"Perfect Gift for a Fisher",creator:"Lifestyle Creator",category:"Lifestyle",description:"Fishing gift idea",url:"https://www.youtube.com/shorts/Vd8NuOoY6ls"},
+  {title:"Tabletop Game Moment",creator:"Games Creator",category:"Games",description:"Tabletop game moment",url:"https://www.youtube.com/shorts/EECMlqzzS80"},
+  {title:"Sharing Food with My Sister",creator:"Family Creator",category:"Food",description:"Family food moment",url:"https://www.youtube.com/shorts/FqM-BVBL6Z0"},
+  {title:"Funny Handmade Creature",creator:"Creative Creator",category:"Satisfying",description:"Handmade creature",url:"https://www.youtube.com/shorts/JAX4SdBAlqw"},
+  {title:"Almost That Time of the Year",creator:"Comedy Creator",category:"Comedy",description:"Seasonal joke",url:"https://www.youtube.com/shorts/ayZQ68Gn7zI"},
+  {title:"Quick Visual Magic Trick",creator:"Entertainment Creator",category:"Entertainment",description:"Visual trick",url:"https://www.youtube.com/shorts/tsqFrPn6dF8"},
+  {title:"Anime Voiceover Moment",creator:"Anime Creator",category:"Anime",description:"Anime voiceover",url:"https://www.youtube.com/shorts/WPK3NG3lJX0"},
+  {title:"Minecraft Character Short",creator:"Minecraft Creator",category:"Minecraft Animation",description:"Animated gaming clip",url:"https://www.youtube.com/shorts/bNZLVSST_Xk"},
+  {title:"Paw Patrol in Minecraft",creator:"Animation Creator",category:"Animation",description:"Family-friendly animation",url:"https://www.youtube.com/shorts/oOx-N1haiZk"},
+  {title:"Why Owls Make These Pellets",creator:"Andrés Andel",category:"Animal Facts",description:"Owl facts explainer",url:"https://www.youtube.com/shorts/D1WeC_ND0O4"}
 ];
